@@ -23,58 +23,20 @@
                         <span class="hero-header-fine-two" data-i18n="hero_prefix"></span>
                         <span class="hero-header-fine-one" data-i18n="hero_free_spins"></span>
                     </div>
-
-
                 </div>
             </div>
         </header>
 
-        <main class="layout">
-            <aside class="banners">
-                <div class="frame-31">
-                    <div class="frame-31-promo">
-                        <div class="miniTag" data-i18n="promo_special_promo"></div>
-                    </div>
-
-                <div class="frame-31-fs">
-                    <div class="frame-32">
-                        <div class="frame-34">
-                            <img src="picture/berry.png" width="32px" height="32px" alt="Frame 34" />
-                            <div class="frame-34-text">
-                                <div class="frame-34-text-value-num" data-i18n="promo_free_spins"></div>
-                            </div>
-                        </div>
-                        <div class="frame-34-text-value">
-                            <div class="frame-34-text-value-sub" data-i18n="promo_for_game"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="frame-31-fd">
-                    <div class="frame-32">
-                        <div class="frame-34">
-                            <img src="picture/gift.png" width="32px" height="32px" alt="Frame 34" />
-                            <div class="frame-34-text">
-                                <div class="frame-34-text-value-num" data-i18n="promo_up_to_bonus"></div>
-                            </div>
-                        </div>
-                        <div class="frame-34-text-value">
-                            <div class="frame-34-text-value-sub" data-i18n="promo_first_deposit"></div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <section class="wheel">
-                <div class="hero-header-description-fine">
-                    <span class="hero-header-description-fine-grey" data-i18n="hero_spin"></span>
-                    <span class="hero-header-description-fine-white" data-i18n="hero_free"></span>
-                    <span class="hero-header-description-fine-grey" data-i18n="hero_for_sweet"></span>
-                    <span class="hero-header-description-fine-white" data-i18n="hero_500"></span>
-                    <span class="hero-header-description-fine-grey" data-i18n="hero_first"></span>
-                    <span class="hero-header-description-fine-white" data-i18n="hero_loot"></span>
-                </div>
-                <div class="case">
+        <section class="wheel">
+            <div class="hero-header-description-fine">
+                <span class="hero-header-description-fine-grey" data-i18n="hero_spin"></span>
+                <span class="hero-header-description-fine-white" data-i18n="hero_free"></span>
+                <span class="hero-header-description-fine-grey" data-i18n="hero_for_sweet"></span>
+                <span class="hero-header-description-fine-white" data-i18n="hero_500"></span>
+                <span class="hero-header-description-fine-grey" data-i18n="hero_first"></span>
+                <span class="hero-header-description-fine-white" data-i18n="hero_loot"></span>
+            </div>
+            <div class="case">
 
                 <div class="btn-spin">
                     <button class="wheel-spin">
@@ -90,12 +52,58 @@
 
                 <div class="sectors" id="sectors"></div>
 
-                </div>
-                <div class="wheel-text">
-                    <div class="wheel-text-one" data-i18n="footer_no_deposit_needed"></div>
-                    <div class="wheel-text-two" data-i18n="footer_bonus_activation_text"></div>
-                </div>
-            </section>
+            </div>
+            <div class="wheel-text">
+                <div class="wheel-text-one" data-i18n="footer_no_deposit_needed"></div>
+                <div class="wheel-text-two" data-i18n="footer_bonus_activation_text"></div>
+            </div>
+
+            <img class="case" src="picture/case.png" alt="arrow" />
+        </section>
+
+        <main class="layout">
+            <aside class="banners">
+                <div class="frame-31">
+                    <!-- <div class="frame-31-promo"> -->
+                    <div class="miniTag" data-i18n="promo_special_promo"></div>
+                    <!-- </div> -->
+
+                    <div class="frame-31-fs">
+                        <div class="frame-32">
+                            <div class="frame-34">
+                                <img src="picture/berry.png" width="32px" height="32px" alt="Frame 34" />
+                                <!-- <div class="frame-34-text"> -->
+                                <div class="frame-34-text" data-i18n="promo_free_spins"></div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="frame-34-text-value">
+                                <div class="frame-34-text-value-sub" data-i18n="promo_for_game"></div>
+                            </div>
+                        </div>
+                        <img src="picture/trick.png" alt="" class="trick">
+                        <img src="picture/sweet_bananza.png" alt="" class="sweet-bananza">
+                        <img src="picture/fs.png" alt="" class="fs">
+                    </div>
+
+                    <div class="frame-31-fd">
+                        <div class="frame-32">
+                            <div class="frame-34">
+                                <img src="picture/gift.png" width="32px" height="32px" alt="Frame 34" />
+                                <!-- <div class="frame-34-text"> -->
+                                <div class="frame-34-text" data-i18n="promo_up_to_bonus"></div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="frame-34-text-value">
+                                <div class="frame-34-text-value-sub" data-i18n="promo_first_deposit"></div>
+                            </div>
+                        </div>
+                        <img src="picture/dollar-top.png" alt="" class="dollar-top">
+                        <img src="picture/dollar-bottom.png" alt="" class="dollar-bottom">
+                        <img src="picture/bag.png" alt="" class="bag">
+                    </div>
+            </aside>
+
+
 
             <section class="card-icons">
 
@@ -119,14 +127,17 @@
 
         <footer class="footer">
             <div class="footer-frame">
-                <div class="topbar__lang">
+                <div class="lang">
                     <select id="langSelect" class="langSelect" aria-label="Language">
                         <option value="en" selected>EN</option>
                         <option value="ru">RU</option>
                         <option value="uz">UZ</option>
                     </select>
                 </div>
-                <span class="muted">18+ © 2026</span>
+                <span class="frame-66">
+                    <span class="frame-66-age">18+</span>
+                    <span class="frame-66-year">© 2026</span>
+                </span>
             </div>
         </footer>
     </div>

@@ -4,25 +4,37 @@
 }
 
 body {
-  width: 1449px;
-  height: 1024px;
+  width: 393px;
+  height: 1582px;
   background: #0D0E10;
+  position: relative;
+}
+
+.brand {
+  width: 104px;
+  height: 24px;
+  transform: rotate(0deg);
+  opacity: 1;
+  top: 40px;
+  left: 145px;
+  position: absolute;
 }
 
 .header {
-  width: 653;
-  height: 128;
-  angle: 0 deg;
+  width: 393px;
+  height: 120px;
+  transform: rotate(0deg);
   opacity: 1;
   gap: 16px;
-  top: 40px;
+  top: 104px;
   left: 393px;
+  position: absolute;
 }
 
 .pill-limited {
-  width: 109px;
-  height: 24px;
-  angle: 0 deg;
+  width: 118px;
+  height: 32px;
+  transform: rotate(0deg);
   opacity: 1;
   border-radius: 8px;
   gap: 10px;
@@ -34,7 +46,7 @@ body {
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-style: Bold;
-  font-size: 14px;
+  font-size: 12px;
   leading-trim: NONE;
   line-height: 24px;
   letter-spacing: 2%;
@@ -43,17 +55,17 @@ body {
 }
 
 .hero-header-fine {
-  width: 653px;
-  height: 80px;
+  width: 393px;
+  height: 72px;
 }
 
 .hero-header-fine-one {
   font-family: "Google Sans", sans-serif;
   font-weight: 700px;
   font-style: Bold;
-  font-size: 40px;
+  font-size: 24px;
   leading-trim: NONE;
-  line-height: 40px;
+  line-height: 24px;
   letter-spacing: 3%;
   text-align: center;
   text-transform: uppercase;
@@ -65,32 +77,281 @@ body {
   font-family: "Google Sans", sans-serif;
   font-weight: 400px;
   font-style: Regular;
-  font-size: 40px;
+  font-size: 24px;
   leading-trim: NONE;
-  line-height: 40px;
+  line-height: 24px;
   letter-spacing: 3%;
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
+  font-family: Google Sans;
+}
+
+/* левая панель */
+.banners {
+  width: 318px;
+  height: 480px;
+  transform: rotate(0deg);
+  opacity: 1;
+  top: 276px;
+  left: 88px;
+  gap: 16px;
+  position: absolute;
+}
+
+.frame-31 {
+  width: 318px;
+  height: 48px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 16px;
+  gap: 10px;
+  padding-top: 4px;
+  padding-right: 16px;
+  padding-bottom: 4px;
+  padding-left: 16px;
+}
+
+.miniTag {
+  font-family: "Google Sans", sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 40px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+
+}
+
+.frame-31-fs {
+  width: 318px;
+  height: 200px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 16px;
+  gap: 10px;
+  padding: 16px;
+
+}
+
+.frame-32 {
+  width: 286px;
+  height: 62px;
+  transform: rotate(0deg);
+  opacity: 1;
+  gap: 8px;
+
+}
+
+.frame-34 {
+  width: 286px;
+  height: 34px;
+  transform: rotate(0deg);
+  opacity: 1;
+  gap: 12px;
+
+}
+
+.frame-34-text {
+  width: 242px;
+  height: 34px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 32px;
+  leading-trim: NONE;
+  line-height: 34px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+
+}
+
+.frame-34-text-value {
+  width: 286;
+  height: 20;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: Google Sans;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 20px;
+  letter-spacing: 1%;
+  color: #888D93;
+}
+
+.trick {
+  width: 43px;
+  height: 33px;
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.sweet-bananza {
+  width: 243px;
+  height: 126px;
+  transform: rotate(8.62deg);
+  opacity: 1;
+}
+
+.fs {
+  width: 69px;
+  height: 51px;
+  transform: rotate(0deg);
+  opacity: 1;
+
+}
+
+.dollar-top {
+  width: 41px;
+  height: 41px;
+  transform: rotate(0deg);
+  opacity: 1;
+
+}
+
+.dollar-bottom {
+  width: 85px;
+  height: 55px;
+  transform: rotate(0deg);
+  opacity: 1;
+
+}
+
+.bag {
+  width: 218px;
+  height: 113px;
+  transform: rotate(-13.28deg);
+  opacity: 1;
+
+}
+
+
+/* правая панель */
+.counter {
+  width: 207;
+  height: 216;
+  transform: rotate(0deg);
+  opacity: 1;
+  top: 340px;
+  left: 1145px;
+  gap: 16px;
+
+}
+
+.spins {
+  width: 207px;
+  height: 100px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 16px;
+  gap: 4px;
+  padding: 16px;
+
+}
+
+.spins-label {
+  width: 119px;
+  height: 24px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 2%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+
+}
+
+.spins-value {
+  width: 104px;
+  height: 40px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 40px;
+  leading-trim: NONE;
+  line-height: 40px;
+  letter-spacing: 2%;
+  text-transform: uppercase;
+  color: #7855F4;
+
+}
+
+.bonuses {
+  width: 207px;
+  height: 100px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 16px;
+  gap: 4px;
+  padding: 16px;
+
+}
+
+.bonuses-label {
+  width: 175px;
+  height: 24px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: Google Sans;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 2%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+
+}
+
+.bonuses-value {
+  width: 104px;
+  height: 40px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: Google Sans;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 40px;
+  leading-trim: NONE;
+  line-height: 40px;
+  letter-spacing: 2%;
+  text-transform: uppercase;
+  color: #3D87F9;
 }
 
 
 /* колесо */
+ОСТАНОВИЛСЯ ТУТ
+ПЕРЕДЕЛАТЬ НА МОБАЙЛ ФЁРСТ
 .hero-header-description-fine {
-  width: 913px;
-  height: 40px;
-  angle: 0 deg;
+  width: 336px;
+  height: 54px;
+  transform: rotate(0deg);
   opacity: 1;
-  top: -54px;
-  left: -92px;
-
+  /* top: 54px;
+  left: 92px; */
+  position: absolute;
 }
 
 .hero-header-description-fine-grey {
   font-family: "Google Sans", sans-serif;
   font-weight: 400px;
   font-style: Regular;
-  font-size: 18px;
+  font-size: 16px;
   leading-trim: NONE;
   line-height: 40px;
   letter-spacing: 3%;
@@ -102,7 +363,7 @@ body {
   font-family: "Google Sans", sans-serif;
   font-weight: 400px;
   font-style: Regular;
-  font-size: 18px;
+  font-size: 16px;
   leading-trim: NONE;
   line-height: 40px;
   letter-spacing: 3%;
@@ -113,7 +374,7 @@ body {
 .btn-spin {
   width: 133px;
   height: 133px;
-  angle: 0 deg;
+  transform: rotate(0deg);
   opacity: 1;
   top: 232px;
   left: 298px;
@@ -122,7 +383,7 @@ body {
 .wheel-spin {
   width: 131px;
   height: 131px;
-  angle: 0 deg;
+  transform: rotate(0deg);
   opacity: 1;
   top: 1px;
   left: 1px;
@@ -140,7 +401,7 @@ body {
 .spin-text {
   width: 90px;
   height: 24px;
-  angle: 0 deg;
+  transform: rotate(0deg);
   opacity: 1;
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
@@ -156,7 +417,7 @@ body {
 .wheel-text {
   width: 344;
   height: 24;
-  angle: 0 deg;
+  transform: rotate(0deg);
   opacity: 1;
   top: 692px;
   left: 193px;
@@ -171,10 +432,19 @@ body {
   color: #FFFFFF99;
 }
 
+.case {
+  width: 238px;
+  height: 210px;
+  transform: rotate(0deg);
+  opacity: 1;
+  top: 504px;
+  left: 359px;
+}
+
 .wheel-arrow {
   width: 116px;
   height: 116px;
-  angle: 156 deg;
+  transform: rotate(-156deg);
   opacity: 1;
   top: 4px;
   left: 384px;
@@ -184,56 +454,181 @@ body {
 .wheel-border {
   width: 729px;
   height: 679px;
-  angle: 0 deg;
+  transform: rotate(0deg);
   opacity: 1;
   top: 12px;
 }
 
 /* Wheel sectors (Figma groups: Ellipse 21 / sect+txt / Subtract) */
 .sectors {
-  /* position: relative; */
-  /* width: ...; height: ...; */
-  /* transform: ...; */
+  /* Контейнер всех сегментов колеса (#sectors из main.html). */
+  /* Внутрь JS добавляет несколько .sector (по одному на каждый сектор). */
+  width: 552px;
+  height: 553px;
+  position: absolute;
+  top: 19px;
+  left: 88.75px;
+  z-index: 1;
 }
 
 .sector {
-  /* position: absolute; */
-  /* inset: 0; */
-  /* transform: rotate(...); */
-  /* pointer-events: none; */
+  position: absolute;
+  inset: 0;
+  transform: rotate(calc(var(--sector-index) * (360deg / var(--sector-count))));
+  transform-origin: 50% 50%;
+  pointer-events: none;
 }
 
 .ellipse-21 {
-  /* position: absolute; */
-  /* width: ...; height: ...; */
-  /* border-radius: 50%; */
-  /* background: ...; */
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0) 74.61%, rgba(16, 16, 16, 0.1) 100%),
+    radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0) 92.01%, rgba(16, 16, 16, 0.1) 100%),
+    radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0.4) 26.59%, rgba(16, 16, 16, 0) 33.68%);
+  z-index: 1;
 }
 
 .sect-txt {
-  /* position: absolute; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* transform: rotate(...); */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 116px;
+  transform: translate(-50%, -50%) rotate(22.5deg) translateY(-168px) rotate(-90deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 3;
 }
 
 .sect-txt-value {
-  /* font-size: ...; */
-  /* font-weight: ...; */
-  /* color: ...; */
+  font-family: "Google Sans", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 0.95;
+  letter-spacing: 0;
+  color: #F9C768;
 }
 
 .sect-txt-label {
-  /* font-size: ...; */
-  /* font-weight: ...; */
-  /* color: ...; */
+  margin-top: 2px;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  text-transform: uppercase;
 }
 
 .subtract {
-  /* position: absolute; */
-  /* width: ...; height: ...; */
-  /* background: ...; */
-  /* clip-path: ...; */
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 50%, 66.5% 0%, 33.5% 0%);
+  background: linear-gradient(180deg, #4A93FF 0%, #2C66D7 100%);
+  box-shadow: inset 0 0 0 2px rgba(22, 17, 45, 0.85);
+  z-index: 2;
 }
 
+.sector:nth-child(even) .subtract {
+  background: linear-gradient(180deg, #7546F3 0%, #4A2CB2 100%);
+}
+
+.sectors::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #0D0E10;
+  box-shadow: 0 0 0 2px rgba(19, 15, 37, 0.9);
+  z-index: 2;
+}
+
+/* подвал */
+.footer {
+  width: 1440px;
+  height: 52px;
+  transform: rotate(0deg);
+  opacity: 1;
+  top: 972px;
+  gap: 8px;
+  padding-right: 80px;
+  padding-bottom: 24px;
+  padding-left: 80px;
+
+}
+
+.footer-frame {
+  width: 1280px;
+  height: 28px;
+  justify-content: space-between;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.lang {
+  width: 48px;
+  height: 28px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 8px;
+  gap: 4px;
+  padding: 8px;
+  backdrop-filter: blur(80px);
+  background: #FFFFFF0A;
+
+}
+
+.langSelect {
+  background: #FFFFFF99;
+}
+
+.frame-66 {
+  width: 86px;
+  height: 12px;
+  transform: rotate(0deg);
+  opacity: 1;
+  gap: 8px;
+
+}
+
+.frame-66-age {
+  width: 17px;
+  height: 12px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 10px;
+  leading-trim: NONE;
+  line-height: 12px;
+  letter-spacing: 4%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF99;
+
+}
+
+.frame-66-year {
+  width: 34px;
+  height: 12px;
+  transform: rotate(0deg);
+  opacity: 1;
+
+  font-family: "Google Sans", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 10px;
+  leading-trim: NONE;
+  line-height: 12px;
+  letter-spacing: 4%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF99;
+}

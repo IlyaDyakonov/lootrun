@@ -32,11 +32,13 @@
     ];
 
     sectorsEl.innerHTML = '';
+    sectorsEl.style.setProperty('--sector-count', String(sectors.length));
     sectors.forEach((s, idx) => {
       // sector (Figma group: "sect+txt" inside the sector)
       const sectorEl = createEl('div', 'sector', {
         'data-sector-index': idx,
       });
+      sectorEl.style.setProperty('--sector-index', String(idx));
 
       // Figma: "Ellipse 21"
       sectorEl.appendChild(createEl('div', 'ellipse-21', { 'aria-hidden': 'true' }));
