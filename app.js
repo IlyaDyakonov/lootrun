@@ -1,150 +1,128 @@
 (() => {
-  const wheelEl = document.getElementById('wheel');
-  const wheelLabelsEl = document.getElementById('wheelLabels');
-  const spinBtn = document.getElementById('spinBtn');
-  const spinsTodayEl = document.getElementById('spinsToday');
-  const bonusesClaimedEl = document.getElementById('bonusesClaimed');
-  const resultEl = document.getElementById('spinResult');
+  // i18n: подстановка текста из languages.json в элементы с data-i18n="key"
+  let languagesCache = null;
 
-  if (!wheelEl || !wheelLabelsEl || !spinBtn || !spinsTodayEl || !bonusesClaimedEl || !resultEl) {
-    // Если разметка не совпала - тихо выходим.
-    return;
+  const createEl = (tag, className, attrs) => {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (attrs) {
+      Object.entries(attrs).forEach(([k, v]) => {
+        if (v === undefined || v === null) return;
+        el.setAttribute(k, String(v));
+      });
+    }
+    return el;
+  };
+
+  const renderWheelSectors = () => {
+    const sectorsEl = document.getElementById('sectors');
+    if (!sectorsEl) return;
+
+    // Базовый набор “как на картинке”: чередуем 200 FREE SPINS и +500% BONUS.
+    // Кол-во и тексты можно менять — DOM построится автоматически.
+    const sectors = [
+      { value: '200', label: 'FREE SPINS' },
+      { value: '+500%', label: 'BONUS' },
+      { value: '200', label: 'FREE SPINS' },
+      { value: '+500%', label: 'BONUS' },
+      { value: '200', label: 'FREE SPINS' },
+      { value: '+500%', label: 'BONUS' },
+      { value: '200', label: 'FREE SPINS' },
+      { value: '+500%', label: 'BONUS' },
+    ];
+
+    sectorsEl.innerHTML = '';
+    sectors.forEach((s, idx) => {
+      // sector (Figma group: "sect+txt" inside the sector)
+      const sectorEl = createEl('div', 'sector', {
+        'data-sector-index': idx,
+      });
+
+      // Figma: "Ellipse 21"
+      sectorEl.appendChild(createEl('div', 'ellipse-21', { 'aria-hidden': 'true' }));
+
+      // Figma: "sect+txt" (text group)
+      const txtEl = createEl('div', 'sect-txt');
+      txtEl.appendChild(createEl('div', 'sect-txt-value', { 'data-part': 'value' })).textContent = s.value;
+      txtEl.appendChild(createEl('div', 'sect-txt-label', { 'data-part': 'label' })).textContent = s.label;
+      sectorEl.appendChild(txtEl);
+
+      // Figma: "Subtract" (shape overlay / wedge)
+      sectorEl.appendChild(createEl('div', 'subtract', { 'aria-hidden': 'true' }));
+
+      sectorsEl.appendChild(sectorEl);
+    });
+  };
+
+  const getLanguagesUrl = () => {
+    // Resolve relative path robustly (helps when main.html is served/opened from a different base URL)
+    try {
+      const scriptUrl = document.currentScript?.src;
+      if (scriptUrl) return new URL('languages.json', scriptUrl).toString();
+    } catch {
+      // ignore and fallback
+    }
+    return new URL('languages.json', window.location.href).toString();
+  };
+
+  const loadLanguages = async () => {
+    if (languagesCache) return languagesCache;
+    const languagesUrl = getLanguagesUrl();
+    const res = await fetch(languagesUrl, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    languagesCache = await res.json();
+    return languagesCache;
+  };
+
+  const applyI18n = async (langOverride) => {
+    const targets = document.querySelectorAll('[data-i18n]');
+    if (!targets.length) return;
+
+    try {
+      const languages = await loadLanguages();
+      const currentLang = (langOverride || document.documentElement.lang || '').trim().toLowerCase();
+      const lang = languages[currentLang] ? currentLang : 'en';
+
+      targets.forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = languages?.[lang]?.[key];
+        if (typeof value === 'string') el.textContent = value;
+      });
+    } catch (e) {
+      console.warn('Failed to load languages.json', {
+        languagesUrl: getLanguagesUrl(),
+        error: e,
+      });
+      return;
+    }
+  };
+
+  // script defer => DOM уже готов, но оставим безопасный хук на случай другой загрузки
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWheelSectors();
+      void applyI18n();
+    });
+  } else {
+    renderWheelSectors();
+    void applyI18n();
   }
 
-  const outcomes = [
-    { top: '200 FREE', sub: 'SPINS', result: '200' },
-    { top: '+500%', sub: 'BONUS', result: '+500%' },
-    { top: '50', sub: 'SPINS', result: '50' },
-    { top: '+200%', sub: 'BONUS', result: '+200%' },
-    { top: '100', sub: 'SPINS', result: '100' },
-    { top: '+300%', sub: 'BONUS', result: '+300%' },
-    { top: '75', sub: 'SPINS', result: '75' },
-    { top: '+150%', sub: 'BONUS', result: '+150%' },
-    { top: '25', sub: 'SPINS', result: '25' },
-    { top: '+100%', sub: 'BONUS', result: '+100%' }
-  ];
+  // Language selector
+  const langSelect = document.getElementById('langSelect');
+  if (langSelect) {
+    const syncSelect = () => {
+      const docLang = (document.documentElement.lang || '').trim().toLowerCase();
+      langSelect.value = docLang || 'en';
+    };
 
-  // Начальная ротация (под “как на макете” визуально).
-  let currentRotation = -18; // degrees
-  let isSpinning = false;
+    syncSelect();
+    langSelect.addEventListener('change', () => {
+      const lang = (langSelect.value || '').trim().toLowerCase();
+      if (!lang) return;
+      document.documentElement.lang = lang;
+      void applyI18n(lang);
+    });
+  }
 
-  const segments = outcomes.length;
-  const segAngle = 360 / segments;
-
-  const formatWithSpaces = (n) =>
-    String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
-  const makeWheelLabels = () => {
-    wheelLabelsEl.innerHTML = '';
-    for (let i = 0; i < segments; i++) {
-      const o = outcomes[i];
-      const angle = i * segAngle + segAngle / 2; // центр сегмента
-
-      const label = document.createElement('div');
-      label.className = 'wheel__label';
-      label.style.transform = `rotate(${angle}deg) translateY(-170px) rotate(-${angle}deg)`;
-
-      const top = document.createElement('div');
-      top.textContent = o.top;
-      top.style.fontSize = '14px';
-
-      const sub = document.createElement('div');
-      sub.className = 'wheel__labelSmall';
-      sub.textContent = o.sub;
-
-      label.appendChild(top);
-      label.appendChild(sub);
-
-      wheelLabelsEl.appendChild(label);
-    }
-  };
-
-  const setWheelRotation = (deg, animate) => {
-    if (!animate) {
-      wheelEl.style.transition = 'none';
-      wheelEl.style.transform = `rotate(${deg}deg)`;
-      // Force reflow
-      // eslint-disable-next-line no-unused-expressions
-      wheelEl.offsetHeight;
-      wheelEl.style.transition = '';
-      return;
-    }
-    wheelEl.style.transform = `rotate(${deg}deg)`;
-  };
-
-  const readSpinsValue = () => {
-    const raw = spinsTodayEl.textContent.trim().replace(/\s+/g, '');
-    const n = parseInt(raw, 10);
-    return Number.isFinite(n) ? n : 0;
-  };
-
-  const writeSpinsValue = (n) => {
-    spinsTodayEl.textContent = formatWithSpaces(Math.max(0, n));
-  };
-
-  const readBonusesValue = () => {
-    const raw = bonusesClaimedEl.textContent.trim().replace(/\s+/g, '');
-    const n = parseInt(raw, 10);
-    return Number.isFinite(n) ? n : 0;
-  };
-
-  const writeBonusesValue = (n) => {
-    bonusesClaimedEl.textContent = formatWithSpaces(Math.max(0, n));
-  };
-
-  const pickOutcomeIndex = () => {
-    // Равномерно. Если хочешь “весы” (например, чаще 200, реже +500%), скажи - добавлю.
-    return Math.floor(Math.random() * segments);
-  };
-
-  const spin = async () => {
-    if (isSpinning) return;
-
-    const spinsLeft = readSpinsValue();
-    if (spinsLeft <= 0) {
-      resultEl.textContent = 'Нет спинов сегодня.';
-      return;
-    }
-
-    isSpinning = true;
-    spinBtn.disabled = true;
-
-    const targetIndex = pickOutcomeIndex();
-    const fullSpins = 5 + Math.floor(Math.random() * 4); // 5..8 полных оборотов
-
-    // Требуемая ротация, чтобы выбранный сегмент оказался под “иглой”.
-    const desiredMod = ((-(targetIndex * segAngle + segAngle / 2)) % 360 + 360) % 360;
-    const currentMod = ((currentRotation % 360) + 360) % 360;
-    const deltaMod = ((desiredMod - currentMod) + 360) % 360;
-
-    const targetRotation = currentRotation + fullSpins * 360 + deltaMod;
-    const durationMs = 4200;
-
-    setWheelRotation(targetRotation, true);
-
-    // Обновляем UI после анимации.
-    window.setTimeout(() => {
-      currentRotation = targetRotation;
-      const o = outcomes[targetIndex];
-
-      resultEl.textContent = o.result === '200'
-        ? '200 FREE SPINS'
-        : `BONUS ${o.result}`;
-
-      writeSpinsValue(spinsLeft - 1);
-      writeBonusesValue(readBonusesValue() + 17); // условная “прибавка” для красоты
-
-      isSpinning = false;
-      spinBtn.disabled = false;
-    }, durationMs);
-  };
-
-  // Инициализация
-  makeWheelLabels();
-  setWheelRotation(currentRotation, false);
-  spinBtn.addEventListener('click', spin);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') spin();
-  });
 })();
-

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -10,111 +10,124 @@
 
 <body>
     <div class="page">
-        <div class="topbar">
-            <div class="brand">loot<span>run</span></div>
-            <div class="pill pill--limited">LIMITED OFFER</div>
+        <div class="brand">
+            <img src="picture/logo.png" width="104" height="24" alt="Logo" />
         </div>
 
-        <header class="hero">
-            <h1 class="hero__title">
-                <span class="hero__titleSmall">SWEET BONANZA BONUS WHEEL</span>
-                <span class="hero__titleBig">SPIN FOR <span class="gradText">200 FREE SPINS</span></span>
-            </h1>
-            <p class="hero__desc">
-                Spin the wheel and grab 200 Free Spins for Sweet Bonanza or up to +500% on your first top-up on loot.run
-            </p>
+        <header class="header">
+            <div class="descr-header">
+                <div class="wheelFooter">
+                    <div class="pill-limited">LIMITED OFFER</div>
+                    <div class="hero-header-fine">
+                        <span class="hero-header-fine-one" data-i18n="hero_brand"></span>
+                        <span class="hero-header-fine-two" data-i18n="hero_prefix"></span>
+                        <span class="hero-header-fine-one" data-i18n="hero_free_spins"></span>
+                    </div>
+
+
+                </div>
+            </div>
         </header>
 
         <main class="layout">
-            <aside class="side side--left">
-                <div class="promoCard promoCard--accent">
-                    <div class="promoCard__top">
-                        <div>
-                            <div class="miniTag">SPECIAL PROMO</div>
-                            <div class="promoCard__value" style="margin-top:10px">
-                                <div class="promoCard__num">200</div>
-                                <div class="promoCard__sub">FREE SPINS</div>
+            <aside class="banners">
+                <div class="frame-31">
+                    <div class="frame-31-promo">
+                        <div class="miniTag" data-i18n="promo_special_promo"></div>
+                    </div>
+
+                <div class="frame-31-fs">
+                    <div class="frame-32">
+                        <div class="frame-34">
+                            <img src="picture/berry.png" width="32px" height="32px" alt="Frame 34" />
+                            <div class="frame-34-text">
+                                <div class="frame-34-text-value-num" data-i18n="promo_free_spins"></div>
                             </div>
                         </div>
+                        <div class="frame-34-text-value">
+                            <div class="frame-34-text-value-sub" data-i18n="promo_for_game"></div>
+                        </div>
                     </div>
-
-                    <div class="promoCard__art" aria-hidden="true">
-                        <div class="artLogo">SWEET BONANZA</div>
-                        <div class="artGlow"></div>
-                    </div>
-
-                    <div class="promoCard__note">for Sweet Bonanza</div>
                 </div>
 
-                <div class="promoCard promoCard--muted">
-                    <div class="giftRow">
-                        <div class="giftIcon" aria-hidden="true"></div>
-                        <div>
-                            <div class="promoCard__label">UP TO +500%</div>
-                            <div class="promoCard__text">on your first deposit</div>
+                <div class="frame-31-fd">
+                    <div class="frame-32">
+                        <div class="frame-34">
+                            <img src="picture/gift.png" width="32px" height="32px" alt="Frame 34" />
+                            <div class="frame-34-text">
+                                <div class="frame-34-text-value-num" data-i18n="promo_up_to_bonus"></div>
+                            </div>
+                        </div>
+                        <div class="frame-34-text-value">
+                            <div class="frame-34-text-value-sub" data-i18n="promo_first_deposit"></div>
                         </div>
                     </div>
                 </div>
             </aside>
 
-            <section class="wheelSection">
-                <div class="wheelHeader">
-                    <div class="wheelHeader__left">
-                        <div class="sparkRow" aria-hidden="true">
-                            <span class="spark"></span>
-                            <span class="spark"></span>
-                            <span class="spark"></span>
-                        </div>
-                    </div>
-                    <div class="wheelHeader__right">
-                        <div class="badge">BONUS</div>
-                    </div>
+            <section class="wheel">
+                <div class="hero-header-description-fine">
+                    <span class="hero-header-description-fine-grey" data-i18n="hero_spin"></span>
+                    <span class="hero-header-description-fine-white" data-i18n="hero_free"></span>
+                    <span class="hero-header-description-fine-grey" data-i18n="hero_for_sweet"></span>
+                    <span class="hero-header-description-fine-white" data-i18n="hero_500"></span>
+                    <span class="hero-header-description-fine-grey" data-i18n="hero_first"></span>
+                    <span class="hero-header-description-fine-white" data-i18n="hero_loot"></span>
+                </div>
+                <div class="case">
+
+                <div class="btn-spin">
+                    <button class="wheel-spin">
+                        <span class="spin-text">
+                            Spin
+                        </span>
+                    </button>
                 </div>
 
-                <div class="wheelWrap">
-                    <div class="needle" aria-hidden="true"></div>
+                <img class="wheel-arrow" src="picture/arrow.png" alt="arrow" />
 
-                    <div class="wheel" id="wheel">
-                        <div class="wheel__rim"></div>
-                        <div class="wheel__grid"></div>
-                        <div class="wheel__labels" id="wheelLabels"></div>
-                        <button class="wheel__spin" id="spinBtn" type="button">
-                            <span class="wheel__spinInner">SPIN</span>
-                        </button>
-                    </div>
+                <img class="wheel-border" src="picture/border-wheel.png" alt="border-wheel" />
+
+                <div class="sectors" id="sectors"></div>
+
                 </div>
+                <div class="wheel-text">
+                    <div class="wheel-text-one" data-i18n="footer_no_deposit_needed"></div>
+                    <div class="wheel-text-two" data-i18n="footer_bonus_activation_text"></div>
+                </div>
+            </section>
 
+            <section class="card-icons">
 
             </section>
 
-            <aside class="side side--right">
-                <div class="statCard">
-                    <div class="statCard__label">SPINS TODAY</div>
-                    <div class="statCard__value" id="spinsToday">2 473</div>
-                </div>
-                <div class="statCard">
-                    <div class="statCard__label">BONUSES CLAIMED</div>
-                    <div class="statCard__value" id="bonusesClaimed">1 092</div>
-                </div>
+            <section class="girl">
 
-                <div class="resultCard">
-                    <div class="resultCard__label">YOUR WIN</div>
-                    <div class="resultCard__value" id="spinResult">—</div>
+            </section>
+
+            <aside class="counter">
+                <div class="spins">
+                    <div class="spins-label" data-i18n="stats_spins_today_label"></div>
+                    <div class="spins-value" id="spinsToday">2 473</div>
+                </div>
+                <div class="bonuses">
+                    <div class="bonuses-label" data-i18n=">stats_bonuses_claimed_label"></div>
+                    <div class="bonuses-value" id="bonusesClaimed">1 092</div>
                 </div>
             </aside>
         </main>
 
         <footer class="footer">
-            <div class="topbar__lang">
-                <button class="langBtn" type="button" aria-label="Language">EN</button>
-            </div>
-            <div class="wheelFooter">
-                <div class="wheelFooter__fine">No deposit needed to spin.</div>
-                <div class="wheelFooter__fine">
-                    Bonus is activated after registration and first top-up on loot.run.
+            <div class="footer-frame">
+                <div class="topbar__lang">
+                    <select id="langSelect" class="langSelect" aria-label="Language">
+                        <option value="en" selected>EN</option>
+                        <option value="ru">RU</option>
+                        <option value="uz">UZ</option>
+                    </select>
                 </div>
+                <span class="muted">18+ © 2026</span>
             </div>
-            <span class="muted">18+ • 2026</span>
         </footer>
     </div>
 
