@@ -12,6 +12,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .page {
@@ -296,8 +301,8 @@ body {
   transform: rotate(0deg);
   opacity: 1;
   position: absolute;
-  top: 72px;
-  right: 66px;
+  top: 56px;
+  right: 60px;
   z-index: 3;
 }
 
@@ -464,7 +469,7 @@ body {
   line-height: 18px;
   letter-spacing: 3%;
   text-align: center;
-  color: #727272;
+  color: #969696;
 }
 
 .hero-header-description-fine-white {
@@ -480,13 +485,13 @@ body {
 }
 
 .btn-spin {
-  width: 85px;
-  height: 85px;
-  transform: scale(0.54);
-  transform-origin: top left;
+  --spin-size: 88px;
+  width: var(--spin-size);
+  height: var(--spin-size);
+  transform: none;
   opacity: 1;
-  top: 114px;
-  left: 162px;
+  top: 91px;
+  left: 148px;
   position: absolute;
   display: flex;
   align-items: center;
@@ -495,8 +500,8 @@ body {
 }
 
 .wheel-spin {
-  width: 85px;
-  height: 85px;
+  width: 100%;
+  height: 100%;
   transform: none;
   opacity: 1;
   border-radius: 0;
@@ -604,29 +609,48 @@ section.wheel>img.case {
 }
 
 .wheel-border {
-  width: 870px;
-  height: 820px;
+  width: 845px;
+  height: 845px;
   transform: scale(0.54);
   transform-origin: top left;
   opacity: 1;
   top: -60px;
-  left: -38px;
+  left: -33px;
   position: absolute;
   z-index: 2;
+  pointer-events: none;
 }
 
 /* Wheel sectors (Figma groups: Ellipse 21 / sect+txt / Subtract) */
 .sectors {
-  /* Контейнер всех сегментов колеса (#sectors из main.html). */
-  /* Внутрь JS добавляет несколько .sector (по одному на каждый сектор). */
-  width: 550px;
-  height: 553px;
+  width: 699px;
+  height: 699px;
   position: absolute;
-  top: -15px;
-  left: 50px;
+  top: -50px;
+  left: 12px;
   z-index: 3;
-  transform: scale(0.55);
+  transform: scale(0.52);
   transform-origin: top left;
+  /* Temporarily disabled CSS-drawn sectors.
+  border-radius: 50%;
+  overflow: hidden;
+  background: repeating-conic-gradient(from -22.5deg,
+      #3E8DF5 0deg 45deg,
+      #6C48E8 45deg 90deg);
+  */
+  --sectors-bg-x: -3px;
+  --sectors-bg-y: -6px;
+  --sectors-bg-width: 718px;
+  --sectors-bg-height: 718px;
+  background-image: url("picture/sectors.png");
+  background-repeat: no-repeat;
+  background-position: var(--sectors-bg-x) var(--sectors-bg-y);
+  background-size: var(--sectors-bg-width) var(--sectors-bg-height);
+}
+
+.sectors::before {
+  /* Temporarily disabled CSS separators. */
+  content: none;
 }
 
 .wheel-text-one,
@@ -639,29 +663,20 @@ section.wheel>img.case {
 }
 
 .sector {
-  position: absolute;
-  inset: 0;
-  transform: rotate(calc(var(--sector-index) * (360deg / var(--sector-count))));
-  transform-origin: 50% 50%;
-  pointer-events: none;
+  /* Temporarily disabled generated sectors DOM. */
+  display: none;
 }
 
 .ellipse-21 {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0) 74.61%, rgba(16, 16, 16, 0.1) 100%),
-    radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0) 92.01%, rgba(16, 16, 16, 0.1) 100%),
-    radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0.4) 26.59%, rgba(16, 16, 16, 0) 33.68%);
-  z-index: 1;
+  display: none;
 }
 
 .sect-txt {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 116px;
-  transform: translate(-50%, -50%) rotate(22.5deg) translateY(-168px) rotate(-90deg);
+  top: var(--sector-text-top);
+  width: 150px;
+  transform: translateX(-50%) rotate(90deg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -673,7 +688,7 @@ section.wheel>img.case {
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-size: 50px;
-  line-height: 0.95;
+  line-height: 0.9;
   letter-spacing: 0;
   color: #F9C768;
 }
@@ -682,38 +697,20 @@ section.wheel>img.case {
   margin-top: 2px;
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
-  font-size: 33px;
-  line-height: 0.95;
+  font-size: 31px;
+  line-height: 0.94;
   letter-spacing: 0.02em;
   color: #FFFFFF;
   text-transform: uppercase;
 }
 
 .subtract {
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(50% 50%, 66.5% 0%, 33.5% 0%);
-  background: linear-gradient(180deg, #4A93FF 0%, #2C66D7 100%);
-  box-shadow: inset 0 0 0 2px rgba(22, 17, 45, 0.85);
-  z-index: 2;
-}
-
-.sector:nth-child(even) .subtract {
-  background: linear-gradient(180deg, #7546F3 0%, #4A2CB2 100%);
+  display: none;
 }
 
 .sectors::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 160px;
-  height: 160px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: #0D0E10;
-  box-shadow: 0 0 0 2px rgba(19, 15, 37, 0.9);
-  z-index: 2;
+  /* Temporarily disabled center overlay. */
+  content: none;
 }
 
 /* подвал */

@@ -40,6 +40,11 @@
         'data-sector-index': idx,
       });
       sectorEl.style.setProperty('--sector-index', String(idx));
+      if (s.label === 'FREE SPINS') {
+        sectorEl.classList.add('sector-free-spins');
+      } else if (s.label === 'BONUS') {
+        sectorEl.classList.add('sector-bonus');
+      }
 
       // Figma: "Ellipse 21"
       sectorEl.appendChild(createEl('div', 'ellipse-21', { 'aria-hidden': 'true' }));
