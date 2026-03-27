@@ -592,20 +592,20 @@ section.wheel>img.case {
 }
 
 .wheel-arrow {
-  width: 75px;
-  height: 75px;
-  transform: scale(0.54) rotate(156deg);
+  width: 95px;
+  height: 95px;
+  transform: rotate(-156deg);
   transform-origin: top left;
   opacity: 1;
-  top: 65.84px;
-  left: 376.84px;
+  top: 49px;
+  left: 287px;
   position: absolute;
   z-index: 6;
 }
 
 .wheel-border {
   width: 870px;
-  height: 819px;
+  height: 820px;
   transform: scale(0.54);
   transform-origin: top left;
   opacity: 1;
@@ -619,13 +619,13 @@ section.wheel>img.case {
 .sectors {
   /* Контейнер всех сегментов колеса (#sectors из main.html). */
   /* Внутрь JS добавляет несколько .sector (по одному на каждый сектор). */
-  width: 552px;
+  width: 550px;
   height: 553px;
   position: absolute;
-  top: 19px;
-  left: 88.75px;
+  top: -15px;
+  left: 50px;
   z-index: 3;
-  transform: scale(0.54);
+  transform: scale(0.55);
   transform-origin: top left;
 }
 
