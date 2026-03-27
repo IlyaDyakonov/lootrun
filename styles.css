@@ -89,30 +89,34 @@ body {
 
 /* левая панель */
 .banners {
-  width: 318px;
+  width: 353px;
   height: 480px;
   transform: rotate(0deg);
   opacity: 1;
-  top: 276px;
-  left: 88px;
+  top: 1006px;
+  left: 20px;
   gap: 16px;
   position: absolute;
 }
 
 .frame-31 {
-  width: 318px;
+  width: 353px;
   height: 48px;
-  transform: rotate(0deg);
-  opacity: 1;
   border-radius: 16px;
-  gap: 10px;
   padding-top: 4px;
   padding-right: 16px;
   padding-bottom: 4px;
   padding-left: 16px;
+  gap: 10px;
+  transform: rotate(0deg);
+  opacity: 1;
 }
 
 .miniTag {
+  width: 147px;
+  height: 40px;
+  transform: rotate(0deg);
+  opacity: 1;
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-style: Bold;
@@ -121,36 +125,32 @@ body {
   line-height: 40px;
   letter-spacing: 0%;
   text-transform: uppercase;
-
 }
 
-.frame-31-fs {
-  width: 318px;
+.frame-31-fs-fd {
+  width: 353px;
   height: 200px;
-  transform: rotate(0deg);
-  opacity: 1;
   border-radius: 16px;
   gap: 10px;
-  padding: 16px;
-
+  transform: rotate(0deg);
+  opacity: 1;
+  padding: 16px;  
 }
 
 .frame-32 {
   width: 286px;
   height: 62px;
-  transform: rotate(0deg);
-  opacity: 1;
   gap: 8px;
-
+  transform: rotate(0deg);
+  opacity: 1;  
 }
 
 .frame-34 {
   width: 286px;
   height: 34px;
-  transform: rotate(0deg);
-  opacity: 1;
   gap: 12px;
-
+  transform: rotate(0deg);
+  opacity: 1;  
 }
 
 .frame-34-text {
@@ -167,15 +167,14 @@ body {
   letter-spacing: 0%;
   text-transform: uppercase;
   color: #FFFFFF;
-
 }
 
 .frame-34-text-value {
-  width: 286;
-  height: 20;
+  width: 286px;
+  height: 20px;
   transform: rotate(0deg);
   opacity: 1;
-  font-family: Google Sans;
+  font-family: "Google Sans", sans-serif;
   font-weight: 400;
   font-style: Regular;
   font-size: 16px;
@@ -195,7 +194,7 @@ body {
 .sweet-bananza {
   width: 243px;
   height: 126px;
-  transform: rotate(8.62deg);
+  transform: rotate(-8.62deg);
   opacity: 1;
 }
 
@@ -234,81 +233,76 @@ body {
 
 /* правая панель */
 .counter {
-  width: 207;
-  height: 216;
+  width: 353px;
+  height: 100px;
+  gap: 8px;
   transform: rotate(0deg);
   opacity: 1;
-  top: 340px;
-  left: 1145px;
-  gap: 16px;
-
+  top: 866px;
+  left: 20px;
 }
 
 .spins {
-  width: 207px;
+  width: 172.5px;
   height: 100px;
-  transform: rotate(0deg);
-  opacity: 1;
   border-radius: 16px;
   gap: 4px;
+  transform: rotate(0deg);
+  opacity: 1;
   padding: 16px;
-
 }
 
 .spins-label {
-  width: 119px;
+  width: 95px;
   height: 24px;
-  transform: rotate(0deg);
   opacity: 1;
+  transform: rotate(0deg);
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-style: Bold;
-  font-size: 18px;
+  font-size: 14px;
   leading-trim: NONE;
   line-height: 24px;
   letter-spacing: 2%;
   text-transform: uppercase;
   color: #FFFFFF;
-
 }
 
 .spins-value {
-  width: 104px;
+  width: 83px;
   height: 40px;
   transform: rotate(0deg);
   opacity: 1;
   font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-style: Bold;
-  font-size: 40px;
+  font-size: 32px;
   leading-trim: NONE;
   line-height: 40px;
   letter-spacing: 2%;
   text-transform: uppercase;
   color: #7855F4;
-
 }
 
 .bonuses {
-  width: 207px;
+  width: 172.5px;
   height: 100px;
-  transform: rotate(0deg);
-  opacity: 1;
   border-radius: 16px;
   gap: 4px;
+  transform: rotate(0deg);
+  opacity: 1;
   padding: 16px;
-
 }
 
 .bonuses-label {
-  width: 175px;
+  width: 139px;
   height: 24px;
   transform: rotate(0deg);
   opacity: 1;
-  font-family: Google Sans;
+  font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-style: Bold;
-  font-size: 18px;
+  font-size: 14px;
   leading-trim: NONE;
   line-height: 24px;
   letter-spacing: 2%;
@@ -318,14 +312,14 @@ body {
 }
 
 .bonuses-value {
-  width: 104px;
+  width: 82px;
   height: 40px;
   transform: rotate(0deg);
   opacity: 1;
-  font-family: Google Sans;
+  font-family: "Google Sans", sans-serif;
   font-weight: 700;
   font-style: Bold;
-  font-size: 40px;
+  font-size: 32px;
   leading-trim: NONE;
   line-height: 40px;
   letter-spacing: 2%;
@@ -335,25 +329,23 @@ body {
 
 
 /* колесо */
-ОСТАНОВИЛСЯ ТУТ
-ПЕРЕДЕЛАТЬ НА МОБАЙЛ ФЁРСТ
 .hero-header-description-fine {
   width: 336px;
   height: 54px;
+  gap: 16px;
   transform: rotate(0deg);
   opacity: 1;
-  /* top: 54px;
-  left: 92px; */
+  left: 196.75px;
   position: absolute;
 }
 
 .hero-header-description-fine-grey {
   font-family: "Google Sans", sans-serif;
-  font-weight: 400px;
+  font-weight: 400;
   font-style: Regular;
   font-size: 16px;
   leading-trim: NONE;
-  line-height: 40px;
+  line-height: 18px;
   letter-spacing: 3%;
   text-align: center;
   color: #727272;
@@ -361,28 +353,28 @@ body {
 
 .hero-header-description-fine-white {
   font-family: "Google Sans", sans-serif;
-  font-weight: 400px;
+  font-weight: 400;
   font-style: Regular;
   font-size: 16px;
   leading-trim: NONE;
-  line-height: 40px;
+  line-height: 18px;
   letter-spacing: 3%;
   text-align: center;
   color: #e6e6e6;
 }
 
 .btn-spin {
-  width: 133px;
-  height: 133px;
+  width: 85px;
+  height: 85px;
   transform: rotate(0deg);
   opacity: 1;
-  top: 232px;
-  left: 298px;
+  top: 214px;
+  left: 322px;
 }
 
 .wheel-spin {
-  width: 131px;
-  height: 131px;
+  width: 85px;
+  height: 85px;
   transform: rotate(0deg);
   opacity: 1;
   top: 1px;
@@ -399,7 +391,7 @@ body {
 }
 
 .spin-text {
-  width: 90px;
+  width: 54px;
   height: 24px;
   transform: rotate(0deg);
   opacity: 1;
@@ -415,40 +407,35 @@ body {
 }
 
 .wheel-text {
-  width: 344;
-  height: 24;
+  width: 288px;
+  height: 56px;
+  border-radius: 16px;
+  gap: 10px;
   transform: rotate(0deg);
   opacity: 1;
-  top: 692px;
-  left: 193px;
-  font-family: "Google Sans", sans-serif;
-  font-weight: 400px;
-  font-style: Regular;
-  font-size: 12px;
-  leading-trim: NONE;
-  line-height: 12px;
-  letter-spacing: 0%;
-  text-align: center;
+  top: 502px;
+  left: 221px;
+  border-width: 1px;
+  padding: 10px;
   color: #FFFFFF99;
 }
 
 .case {
-  width: 238px;
-  height: 210px;
+  width: 336px;
+  height: 36px;
   transform: rotate(0deg);
   opacity: 1;
-  top: 504px;
-  left: 359px;
+  top: 526px;
+  left: 197px;
 }
 
 .wheel-arrow {
-  width: 116px;
-  height: 116px;
-  transform: rotate(-156deg);
+  width: 75px;
+  height: 75px;
+  transform: rotate(156deg);
   opacity: 1;
-  top: 4px;
-  left: 384px;
-  rotation: 156 deg;
+  top: 65.84px;
+  left: 376.84px;
 }
 
 .wheel-border {
