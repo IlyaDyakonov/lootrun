@@ -2,7 +2,8 @@
     "en": {
         "hero_headline": "SWEET BONANZA BONUS WHEEL SPIN FOR 200 FREE SPINS",
         "hero_brand": "SWEET BONANZA",
-        "hero_prefix": "BONUS WHEEL SPIN FOR",
+        "hero_prefix": "BONUS WHEEL",
+        "hero_spin_for": "SPIN FOR",
         "hero_free_spins": "200 FREE SPINS",
         "hero_description": "Spin the wheel and grab 200 Free Spins for Sweet Bonanza or up to +500% on your first top-up on loot.run",
         "hero_spin": "Spin the wheel and grab",
@@ -46,7 +47,8 @@
     "ru": {
         "hero_headline": "ВРАЩАЙ КОЛЕСО БОНУСОВ И ПОЛУЧИ 200 ФРИСПИНОВ",
         "hero_brand": "ВРАЩАЙ КОЛЕСО",
-        "hero_prefix": "БОНУСОВ И ПОЛУЧИ",
+        "hero_prefix": "БОНУСОВ",
+        "hero_spin_for": "И ПОЛУЧИ",
         "hero_free_spins": "200 ФРИСПИНОВ",
         "hero_description": "Вращай колесо и получи 200 фриспинов для Sweet Bonanza или до +500% на первый депозит на loot.run",
         "hero_spin": "Вращай колесо и получи",
@@ -90,7 +92,8 @@
     "uz": {
         "hero_headline": "BONUSLAR G'ILDIRAGINI AYLANTIR VA 200 TA BEPUL AYLANTIRISHLARNI OL",
         "hero_brand": "BONUSLAR G'ILDIRAGINI",
-        "hero_prefix": "AYLANTIR VA 200 TA",
+        "hero_prefix": "AYLANTIR VA",
+        "hero_spin_for": "200 TA",
         "hero_free_spins": "BEPUL AYLANTIRISHLARNI OL",
         "hero_description": "G'ildirakni aylantir va Sweet Bonanza uchun 200 ta aylantirish yoki birinchi depozit uchun loot.run da +500% gacha ol",
         "hero_spin": "G'ildirakni aylantir va Sweet Bonanza",
