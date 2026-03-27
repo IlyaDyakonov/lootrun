@@ -1,6 +1,7 @@
 (() => {
   // i18n: подстановка текста из languages.json в элементы с data-i18n="key"
   let languagesCache = null;
+  const inlineLanguages = window.__LANGUAGES__ || null;
 
   const createEl = (tag, className, attrs) => {
     const el = document.createElement(tag);
@@ -69,11 +70,25 @@
 
   const loadLanguages = async () => {
     if (languagesCache) return languagesCache;
+
+    if (window.location.protocol === 'file:' && inlineLanguages) {
+      languagesCache = inlineLanguages;
+      return languagesCache;
+    }
+
     const languagesUrl = getLanguagesUrl();
-    const res = await fetch(languagesUrl, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    languagesCache = await res.json();
-    return languagesCache;
+    try {
+      const res = await fetch(languagesUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      languagesCache = await res.json();
+      return languagesCache;
+    } catch (error) {
+      if (inlineLanguages) {
+        languagesCache = inlineLanguages;
+        return languagesCache;
+      }
+      throw error;
+    }
   };
 
   const applyI18n = async (langOverride) => {
@@ -110,20 +125,66 @@
     void applyI18n();
   }
 
-  // Language selector
-  const langSelect = document.getElementById('langSelect');
-  if (langSelect) {
-    const syncSelect = () => {
-      const docLang = (document.documentElement.lang || '').trim().toLowerCase();
-      langSelect.value = docLang || 'en';
+  // Custom language dropdown
+  const langRoot = document.querySelector('.lang');
+  const langToggle = document.getElementById('langToggle');
+  const langMenu = document.getElementById('langMenu');
+  const langToggleLabel = document.querySelector('.langToggleLabel');
+  const langOptions = Array.from(document.querySelectorAll('[data-lang-option]'));
+
+  if (langRoot && langToggle && langMenu && langToggleLabel && langOptions.length) {
+    const closeMenu = () => {
+      langRoot.classList.remove('is-open');
+      langMenu.hidden = true;
+      langToggle.setAttribute('aria-expanded', 'false');
     };
 
-    syncSelect();
-    langSelect.addEventListener('change', () => {
-      const lang = (langSelect.value || '').trim().toLowerCase();
-      if (!lang) return;
-      document.documentElement.lang = lang;
-      void applyI18n(lang);
+    const openMenu = () => {
+      langRoot.classList.add('is-open');
+      langMenu.hidden = false;
+      langToggle.setAttribute('aria-expanded', 'true');
+    };
+
+    const syncLanguageUi = () => {
+      const docLang = (document.documentElement.lang || 'en').trim().toLowerCase();
+      const activeLang = langOptions.find((option) => option.dataset.langOption === docLang)?.dataset.langOption || 'en';
+
+      langToggleLabel.textContent = activeLang.toUpperCase();
+      langOptions.forEach((option) => {
+        const isSelected = option.dataset.langOption === activeLang;
+        option.setAttribute('aria-selected', String(isSelected));
+        option.hidden = isSelected;
+      });
+    };
+
+    syncLanguageUi();
+    closeMenu();
+
+    langToggle.addEventListener('click', () => {
+      if (langMenu.hidden) {
+        openMenu();
+        return;
+      }
+      closeMenu();
+    });
+
+    langOptions.forEach((option) => {
+      option.addEventListener('click', () => {
+        const lang = (option.dataset.langOption || '').trim().toLowerCase();
+        if (!lang) return;
+        document.documentElement.lang = lang;
+        syncLanguageUi();
+        closeMenu();
+        void applyI18n(lang);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!langRoot.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
     });
   }
 

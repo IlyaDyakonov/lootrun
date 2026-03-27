@@ -68,7 +68,7 @@
                     <div class="spins-value" id="spinsToday">2 473</div>
                 </div>
                 <div class="bonuses">
-                    <div class="bonuses-label" data-i18n=">stats_bonuses_claimed_label"></div>
+                    <div class="bonuses-label" data-i18n="stats_bonuses_claimed_label"></div>
                     <div class="bonuses-value" id="bonusesClaimed">1 092</div>
                 </div>
             </aside>
@@ -112,6 +112,7 @@
                         <img src="picture/dollar-bottom.png" alt="" class="dollar-bottom">
                         <img src="picture/bag.png" alt="" class="bag">
                     </div>
+                </div>
             </aside>
 
 
@@ -128,13 +129,24 @@
         </main>
 
         <footer class="footer">
-            <div class="footer-frame">
+            <div class="images-footer">
                 <div class="lang">
-                    <select id="langSelect" class="langSelect" aria-label="Language">
-                        <option value="en" selected>EN</option>
-                        <option value="ru">RU</option>
-                        <option value="uz">UZ</option>
-                    </select>
+                    <button
+                        id="langToggle"
+                        class="langToggle"
+                        type="button"
+                        aria-label="Language"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                    >
+                        <span class="langToggleLabel">EN</span>
+                        <span class="langChevron" aria-hidden="true"></span>
+                    </button>
+                    <div id="langMenu" class="langMenu" role="listbox" aria-label="Language options" hidden>
+                        <button class="langOption" type="button" role="option" data-lang-option="en" aria-selected="true">EN</button>
+                        <button class="langOption" type="button" role="option" data-lang-option="uz" aria-selected="false">UZ</button>
+                        <button class="langOption" type="button" role="option" data-lang-option="ru" aria-selected="false">RU</button>
+                    </div>
                 </div>
                 <span class="frame-66">
                     <span class="frame-66-age">18+</span>
@@ -144,6 +156,7 @@
         </footer>
     </div>
 
+    <script src="languages.inline.js"></script>
     <script src="app.js" defer></script>
 </body>
 
