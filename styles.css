@@ -485,18 +485,34 @@ html {
 }
 
 .btn-spin {
-  --spin-size: 88px;
+  --spin-size: 87px;
+  --spin-overlay-size: 65px;
+  --spin-overlay-offset-x: 0px;
+  --spin-overlay-offset-y: 0px;
   width: var(--spin-size);
   height: var(--spin-size);
   transform: none;
   opacity: 1;
   top: 91px;
-  left: 148px;
+  left: 153px;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 7;
+}
+
+.btn-spin::after {
+  content: "";
+  position: absolute;
+  width: var(--spin-overlay-size);
+  height: var(--spin-overlay-size);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translate(var(--spin-overlay-offset-x), var(--spin-overlay-offset-y));
+  background: url("picture/Vector.png") center / contain no-repeat;
+  pointer-events: none;
+  z-index: 8;
 }
 
 .wheel-spin {
