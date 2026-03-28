@@ -174,7 +174,7 @@
       window.setTimeout(() => {
         if (spinningBonusOne) spinningBonusOne.classList.remove('is-visible');
         if (spinningBonusTwo) spinningBonusTwo.classList.add('is-visible');
-      }, 2000);
+      }, 1500);
     }
 
     if (sectors) {
@@ -183,13 +183,22 @@
       const caseEl = sectors.closest('.case');
       const spinTimingParent = caseEl || document.documentElement;
       const spinCs = getComputedStyle(spinTimingParent);
-      const durSec = parseFloat(spinCs.getPropertyValue('--wheel-spin-duration')) || 3.8;
-      const delaySec = parseFloat(spinCs.getPropertyValue('--wheel-spin-delay')) || 0.5;
+      const durParsed = parseFloat(spinCs.getPropertyValue('--wheel-spin-duration'));
+      const delayParsed = parseFloat(spinCs.getPropertyValue('--wheel-spin-delay'));
+      const durSec = Number.isFinite(durParsed) ? durParsed : 3.8;
+      const delaySec = Number.isFinite(delayParsed) ? delayParsed : 0;
       const fallbackMs = Math.ceil((durSec + delaySec) * 1000) + 80;
 
       const showEndSectors = () => {
         sectors.classList.add('sectors-ended');
-        if (spinningBonusContainer) spinningBonusContainer.hidden = true;
+        if (spinningBonusContainer) {
+          spinningBonusContainer.classList.add('is-fade-out');
+          const bonusFadeSec = parseFloat(getComputedStyle(spinningBonusContainer).transitionDuration);
+          const bonusHideMs = Math.ceil((Number.isFinite(bonusFadeSec) ? bonusFadeSec : 0.45) * 1000) + 30;
+          window.setTimeout(() => {
+            spinningBonusContainer.hidden = true;
+          }, bonusHideMs);
+        }
         if (wheelFireworks) {
           wheelFireworks.hidden = false;
           wheelFireworks.setAttribute('aria-hidden', 'false');
