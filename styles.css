@@ -266,70 +266,252 @@ html {
   color: #888D93;
 }
 
+/* Promo images: путь — --promo-x-to / --promo-y-to; масштаб — --promo-scale-to / --promo-scale-from;
+   вращение вокруг центра — --promo-rotate-to / --promo-rotate-from (например 0deg … 12deg или 0deg … 360deg).
+   Длительность/повтор: --promo-dur, --promo-iter, --promo-dir.
+   Пример: style="--promo-y-to: 60px; --promo-scale-to: 1.12; --promo-rotate-to: 15deg;" */
+
 .trick {
   width: 43px;
   height: 33px;
-  transform: rotate(-90deg);
   opacity: 1;
   position: absolute;
-  top: 45px;
-  right: -5px;
   z-index: 3;
+  transform-origin: center center;
+
+  --promo-x-from: calc(100% - 38px);
+  --promo-y-from: 45px;
+  --promo-x-to: calc(100% - 30px);
+  --promo-y-to: 45px;
+  --promo-scale-from: 1;
+  --promo-scale-to: 1.7;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 40deg;
+  --promo-dur: 1.2s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(-90deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: promo-move-trick var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
+}
+
+@keyframes promo-move-trick {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(-90deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(-90deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
 }
 
 .sweet-bananza {
   width: 300px;
   height: 300px;
-  transform: rotate(-8.62deg);
   opacity: 1;
   position: absolute;
-  right: -35px;
-  top: -20px;
   z-index: 1;
+  transform-origin: center center;
+
+  --promo-x-from: calc(100% - 265px);
+  --promo-y-from: -20px;
+  --promo-x-to: calc(100% - 295px);
+  --promo-y-to: -20px;
+  --promo-scale-from: 1;
+  --promo-scale-to: 1.2;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: -7deg;
+  --promo-dur: 1.2s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(-8.62deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: promo-move-sweet-bananza var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
+}
+
+@keyframes promo-move-sweet-bananza {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(-8.62deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(-8.62deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
 }
 
 .fs {
   width: 69px;
   height: 51px;
-  transform: rotate(0deg);
   opacity: 1;
   position: absolute;
-  right: 51px;
-  top: 148px;
   z-index: 3;
+  transform-origin: center center;
+
+  --promo-x-from: calc(100% - 120px);
+  --promo-y-from: 148px;
+  --promo-x-to: calc(100% - 120px);
+  --promo-y-to: 148px;
+  --promo-scale-from: 1;
+  --promo-scale-to: 1.4;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 0deg;
+  --promo-dur: 1.2s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: promo-move-fs var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
+
+@keyframes promo-move-fs {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
+}
+
+/* FD-блок (dollar / bag): те же --promo-* что у trick/fs — x/y, scale, rotate, dur, iter, dir.
+   Конец пути и размер: задайте --promo-x-to, --promo-y-to, --promo-scale-to (и при нужде from). */
 
 .dollar-top {
   width: 41px;
   height: 41px;
-  transform: rotate(0deg);
   opacity: 1;
   position: absolute;
-  top: 56px;
-  right: 60px;
   z-index: 3;
+  transform-origin: center center;
+
+  --promo-x-from: calc(100% - 105px);
+  --promo-y-from: 56px;
+  --promo-x-to: calc(100% - 145px);
+  --promo-y-to: 56px;
+  --promo-scale-from: 1.1;
+  --promo-scale-to: 1.4;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 30deg;
+  --promo-dur: 1.2s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: promo-move-dollar-top var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
+}
+
+@keyframes promo-move-dollar-top {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
 }
 
 .dollar-bottom {
   width: 85px;
   height: 55px;
-  transform: rotate(0deg);
   opacity: 1;
   position: absolute;
-  left: 120px;
-  bottom: 0px;
   z-index: 2;
+  transform-origin: center center;
+
+  --promo-x-from: 125px;
+  --promo-y-from: calc(100% - 55px);
+  --promo-x-to: 75px;
+  --promo-y-to: calc(100% - 45px);
+  --promo-scale-from: 1;
+  --promo-scale-to: 1.3;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: -20deg;
+  --promo-dur: 1.2s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: promo-move-dollar-bottom var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
+}
+
+@keyframes promo-move-dollar-bottom {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
 }
 
 .bag {
   width: 258px;
   height: 203px;
-  transform: rotate(-13.28deg);
   opacity: 1;
   position: absolute;
-  right: -24px;
-  bottom: -30px;
   z-index: 1;
+  transform-origin: center center;
+
+  --promo-x-from: calc(100% - 245px);
+  --promo-y-from: 35px;
+  --promo-x-to: calc(100% - 265px);
+  --promo-y-to: 15px;
+  --promo-scale-from: 0.9;
+  --promo-scale-to: 1.4;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 0deg;
+  --promo-dur: 1.2s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(-13.28deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: promo-move-bag var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
+}
+
+@keyframes promo-move-bag {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(-13.28deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(-13.28deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
 }
 
 
