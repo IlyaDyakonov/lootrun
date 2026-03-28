@@ -119,6 +119,98 @@
     }
   };
 
+  let spinStateActivated = false;
+
+  const activateSpinStateUi = () => {
+    if (spinStateActivated) return;
+    spinStateActivated = true;
+
+    const spinButtonRoot = document.querySelector('.btn-spin');
+    const spinButton = document.querySelector('.wheel-spin');
+    const normalDescription = document.querySelector('.hero-header-description-fine:not(.hero-header-description-fine-spinning)');
+    const spinningDescription = document.querySelector('.hero-header-description-fine-spinning');
+    const wheelText = document.querySelector('.wheel-text');
+    const spinningBonusOne = document.querySelector('.spinning-bonus-one');
+    const spinningBonusTwo = document.querySelector('.spinning-bonus-two');
+    const spinningBonusContainer = document.querySelector('.spinning-bonus-container');
+    const wheelFireworks = document.getElementById('wheelFireworks');
+    const sectors = document.getElementById('sectors');
+
+    if (spinningDescription) {
+      spinningDescription.hidden = false;
+      requestAnimationFrame(() => {
+        spinningDescription.classList.add('is-visible');
+      });
+    }
+
+    if (spinButton) {
+      spinButton.classList.add('is-fade-out');
+      window.setTimeout(() => {
+        spinButton.hidden = true;
+      }, 300);
+    }
+
+    if (normalDescription) {
+      normalDescription.classList.add('is-fade-out');
+      window.setTimeout(() => {
+        normalDescription.hidden = true;
+      }, 300);
+    }
+
+    if (wheelText) {
+      wheelText.classList.add('is-fade-out');
+      window.setTimeout(() => {
+        wheelText.hidden = true;
+      }, 300);
+    }
+
+    if (spinningBonusOne) {
+      spinningBonusOne.classList.add('is-visible');
+    }
+    if (spinningBonusTwo) {
+      spinningBonusTwo.classList.remove('is-visible');
+    }
+    if (spinningBonusOne || spinningBonusTwo) {
+      window.setTimeout(() => {
+        if (spinningBonusOne) spinningBonusOne.classList.remove('is-visible');
+        if (spinningBonusTwo) spinningBonusTwo.classList.add('is-visible');
+      }, 2000);
+    }
+
+    if (sectors) {
+      sectors.classList.add('is-swapped');
+
+      const caseEl = sectors.closest('.case');
+      const spinTimingParent = caseEl || document.documentElement;
+      const spinCs = getComputedStyle(spinTimingParent);
+      const durSec = parseFloat(spinCs.getPropertyValue('--wheel-spin-duration')) || 3.8;
+      const delaySec = parseFloat(spinCs.getPropertyValue('--wheel-spin-delay')) || 0.5;
+      const fallbackMs = Math.ceil((durSec + delaySec) * 1000) + 80;
+
+      const showEndSectors = () => {
+        sectors.classList.add('sectors-ended');
+        if (spinningBonusContainer) spinningBonusContainer.hidden = true;
+        if (wheelFireworks) {
+          wheelFireworks.hidden = false;
+          wheelFireworks.setAttribute('aria-hidden', 'false');
+        }
+      };
+
+      const onSpinAnimationEnd = (e) => {
+        if (e.animationName !== 'sectorsSpin') return;
+        sectors.removeEventListener('animationend', onSpinAnimationEnd);
+        window.clearTimeout(fallbackTimer);
+        showEndSectors();
+      };
+
+      sectors.addEventListener('animationend', onSpinAnimationEnd);
+      const fallbackTimer = window.setTimeout(() => {
+        sectors.removeEventListener('animationend', onSpinAnimationEnd);
+        showEndSectors();
+      }, fallbackMs);
+    }
+  };
+
   // script defer => DOM уже готов, но оставим безопасный хук на случай другой загрузки
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -128,6 +220,14 @@
   } else {
     renderWheelSectors();
     void applyI18n();
+  }
+
+  const spinButton = document.querySelector('.wheel-spin');
+  if (spinButton) {
+    spinButton.addEventListener('click', () => {
+      activateSpinStateUi();
+      void applyI18n();
+    });
   }
 
   // Custom language dropdown

@@ -458,6 +458,28 @@ html {
   transform: translateX(-50%);
   text-align: center;
   z-index: 12;
+  transition: opacity 0.3s ease;
+}
+
+.hero-header-description-fine-spinning {
+  top: var(--hero-desc-top);
+  opacity: 0;
+}
+
+.hero-header-description-fine-spinning.is-visible {
+  opacity: 1;
+}
+
+.hero-header-description-fine.is-fade-out,
+.wheel-text.is-fade-out,
+.wheel-spin.is-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-header-description-fine[hidden],
+.btn-spin[hidden] {
+  display: none !important;
 }
 
 .hero-header-description-fine-grey {
@@ -485,7 +507,7 @@ html {
 }
 
 .btn-spin {
-  --spin-size: 87px;
+  --spin-size: 88px;
   --spin-overlay-size: 65px;
   --spin-overlay-offset-x: 0px;
   --spin-overlay-offset-y: 0px;
@@ -493,8 +515,8 @@ html {
   height: var(--spin-size);
   transform: none;
   opacity: 1;
-  top: 91px;
-  left: 153px;
+  top: 88px;
+  left: 154px;
   position: absolute;
   display: flex;
   align-items: center;
@@ -530,6 +552,7 @@ html {
   appearance: none;
   box-sizing: border-box;
   cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
 .wheel-spin:hover {
@@ -580,6 +603,7 @@ html {
   line-height: 12px;
   letter-spacing: 0%;
   text-align: center;
+  transition: opacity 0.3s ease;
 }
 
 .case {
@@ -601,6 +625,9 @@ section.wheel>div.case {
   transform: translateX(-50%);
   transform-origin: top center;
   z-index: 5;
+  --wheel-spin-duration: 3.8s;
+  --wheel-spin-delay: 0.5s;
+  --wheel-spin-easing: cubic-bezier(0.22, 0.78, 0.22, 1);
 }
 
 section.wheel>img.case {
@@ -610,6 +637,82 @@ section.wheel>img.case {
   width: 160px;
   height: auto;
   z-index: 8;
+}
+
+.spinning-bonus-container {
+  position: absolute;
+  top: 715px;
+  left: 50%;
+  width: 330px;
+  height: 56px;
+  transform: translateX(-50%);
+  z-index: 9;
+  pointer-events: none;
+}
+
+.spinning-bonus-one,
+.spinning-bonus-two {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.spinning-bonus-one.is-visible,
+.spinning-bonus-two.is-visible {
+  opacity: 1;
+}
+
+/* Три салюта после финала колеса: позиции и размер — переменные ниже (координаты от .wheel) */
+.wheel-fireworks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+
+  --wheel-firework-size1: 155px;
+  --wheel-firework-size2: 85px;
+  --wheel-firework-size3: 130px;
+  --wheel-firework-1-top: 325px;
+  --wheel-firework-1-left: 24px;
+  --wheel-firework-2-top: 310px;
+  --wheel-firework-2-left: 175px;
+  --wheel-firework-3-top: 330px;
+  --wheel-firework-3-left: 230px;
+}
+
+.wheel-fireworks[hidden] {
+  display: none !important;
+}
+
+.wheel-firework {
+  position: absolute;
+  height: auto;
+}
+
+.wheel-firework--1 {
+  width: var(--wheel-firework-1-width, var(--wheel-firework-size1));
+  top: var(--wheel-firework-1-top);
+  left: var(--wheel-firework-1-left);
+  transform: var(--wheel-firework-1-transform, none);
+}
+
+.wheel-firework--2 {
+  width: var(--wheel-firework-2-width, var(--wheel-firework-size2));
+  top: var(--wheel-firework-2-top);
+  left: var(--wheel-firework-2-left);
+  transform: var(--wheel-firework-2-transform, none);
+}
+
+.wheel-firework--3 {
+  width: var(--wheel-firework-3-width, var(--wheel-firework-size3));
+  top: var(--wheel-firework-3-top);
+  left: var(--wheel-firework-3-left);
+  transform: var(--wheel-firework-3-transform, none);
 }
 
 .wheel-arrow {
@@ -625,15 +728,15 @@ section.wheel>img.case {
 }
 
 .wheel-border {
-  width: 845px;
+  width: 890px;
   height: 845px;
   transform: scale(0.54);
   transform-origin: top left;
   opacity: 1;
   top: -60px;
-  left: -33px;
+  left: -43px;
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   pointer-events: none;
 }
 
@@ -654,19 +757,63 @@ section.wheel>img.case {
       #3E8DF5 0deg 45deg,
       #6C48E8 45deg 90deg);
   */
-  --sectors-bg-x: -3px;
-  --sectors-bg-y: -6px;
-  --sectors-bg-width: 718px;
-  --sectors-bg-height: 718px;
-  background-image: url("picture/sectors.png");
-  background-repeat: no-repeat;
-  background-position: var(--sectors-bg-x) var(--sectors-bg-y);
-  background-size: var(--sectors-bg-width) var(--sectors-bg-height);
+  --sectors-bg-x: 59px;
+  --sectors-bg-y: 59px;
+  --sectors-bg-width: 585px;
+  --sectors-bg-height: 585px;
+  --sectors-spin-end: calc(var(--wheel-start-rotation) + 360deg);
+  isolation: isolate;
 }
 
 .sectors::before {
-  /* Temporarily disabled CSS separators. */
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("picture/sect+txt.png");
+  background-repeat: no-repeat;
+  background-position: var(--sectors-bg-x) var(--sectors-bg-y);
+  background-size: var(--sectors-bg-width) var(--sectors-bg-height);
+  transform: rotate(var(--wheel-start-rotation));
+  transform-origin: 50% 50%;
+  z-index: -1;
+}
+
+/* Финишная графика поверх колеса (выше ::before) */
+.sectors::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("picture/sect+txt_end.png");
+  background-repeat: no-repeat;
+  background-position: var(--sectors-bg-x) var(--sectors-bg-y);
+  background-size: var(--sectors-bg-width) var(--sectors-bg-height);
+  transform: rotate(calc(var(--sectors-spin-end) - var(--wheel-start-rotation)));
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.sectors.is-swapped.sectors-ended::after {
+  opacity: 1;
+}
+
+.sectors.is-swapped::before {
+  animation: sectorsSpin var(--wheel-spin-duration) var(--wheel-spin-easing) var(--wheel-spin-delay) 1 forwards;
+}
+
+@keyframes sectorsSpin {
+  0% {
+    transform: rotate(var(--wheel-start-rotation));
+  }
+
+  20% {
+    transform: rotate(calc(var(--wheel-start-rotation) - 30deg));
+  }
+
+  100% {
+    transform: rotate(var(--sectors-spin-end));
+  }
 }
 
 .wheel-text-one,
@@ -685,6 +832,11 @@ section.wheel>img.case {
 
 .ellipse-21 {
   display: none;
+}
+
+/* Стартовый поворот колеса (картинка секторов и ключевые кадры анимации). Меняйте угол здесь. */
+:root {
+  --wheel-start-rotation: 30deg;
 }
 
 .sect-txt {
@@ -722,11 +874,6 @@ section.wheel>img.case {
 
 .subtract {
   display: none;
-}
-
-.sectors::after {
-  /* Temporarily disabled center overlay. */
-  content: none;
 }
 
 /* подвал */
