@@ -135,6 +135,7 @@
     const spinningBonusContainer = document.querySelector('.spinning-bonus-container');
     const wheelFireworks = document.getElementById('wheelFireworks');
     const sectors = document.getElementById('sectors');
+    const wheelArrow = document.querySelector('.wheel-arrow');
 
     if (spinningDescription) {
       spinningDescription.hidden = false;
@@ -188,6 +189,25 @@
       const durSec = Number.isFinite(durParsed) ? durParsed : 3.8;
       const delaySec = Number.isFinite(delayParsed) ? delayParsed : 0;
       const fallbackMs = Math.ceil((durSec + delaySec) * 1000) + 80;
+
+      if (wheelArrow) {
+        wheelArrow.classList.add('is-spinning');
+        const settleArrow = () => {
+          wheelArrow.classList.remove('is-spinning');
+          wheelArrow.classList.add('wheel-arrow--spin-settled');
+        };
+        const onArrowSpinEnd = (e) => {
+          if (e.animationName !== 'wheelArrowSpin') return;
+          wheelArrow.removeEventListener('animationend', onArrowSpinEnd);
+          window.clearTimeout(arrowFallbackTimer);
+          settleArrow();
+        };
+        wheelArrow.addEventListener('animationend', onArrowSpinEnd);
+        const arrowFallbackTimer = window.setTimeout(() => {
+          wheelArrow.removeEventListener('animationend', onArrowSpinEnd);
+          settleArrow();
+        }, fallbackMs);
+      }
 
       const showEndSectors = () => {
         sectors.classList.add('sectors-ended');

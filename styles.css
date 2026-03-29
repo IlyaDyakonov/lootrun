@@ -951,6 +951,23 @@ section.wheel>div.case {
   --wheel-spin-duration: 3.8s;
   --wheel-spin-delay: 0s;
   --wheel-spin-easing: cubic-bezier(0.22, 0.78, 0.22, 1);
+
+  /* Базовый угол стрелки (задаёте сами). Доп. поворот по часовой — через --wheel-arrow-spin-0 … --wheel-arrow-spin-10 (кумулятивно к базе). */
+  --wheel-arrow-base-rotation: -156deg;
+  --wheel-arrow-spin-0: 0deg;
+  --wheel-arrow-spin-1: 10deg;
+  --wheel-arrow-spin-2: 10deg;
+  --wheel-arrow-spin-3: 0deg;
+  --wheel-arrow-spin-4: -10deg;
+  --wheel-arrow-spin-5: -20deg;
+  --wheel-arrow-spin-6: -10deg;
+  --wheel-arrow-spin-7: -20deg;
+  --wheel-arrow-spin-8: -10deg;
+  --wheel-arrow-spin-9: -5deg;
+  --wheel-arrow-spin-10: 0deg;
+
+  /* Плавность между ключевыми кадрами стрелки (интервал от этого % до следующего). Общий тайминг анимации — linear, чтобы не дублировать easing с колесом. */
+  --wheel-arrow-segment-easing: cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 section.wheel>img.case {
@@ -1045,15 +1062,102 @@ section.wheel>img.case {
 }
 
 .wheel-arrow {
-  width: 95px;
-  height: 95px;
-  transform: rotate(-156deg);
-  transform-origin: top left;
+  /*
+   * Явный inherit: самоссылочный var(--имя) на том же элементе в Chromium часто даёт невалидное значение
+   * → базовый rotate ломается (стрелка как в PNG, «вверх»), в @keyframes spin-* схлопываются в 0.
+   * inherit копирует вычисленные значения с .case без циклов.
+   */
+  --wheel-arrow-base-rotation: inherit;
+  --wheel-arrow-spin-0: inherit;
+  --wheel-arrow-spin-1: inherit;
+  --wheel-arrow-spin-2: inherit;
+  --wheel-arrow-spin-3: inherit;
+  --wheel-arrow-spin-4: inherit;
+  --wheel-arrow-spin-5: inherit;
+  --wheel-arrow-spin-6: inherit;
+  --wheel-arrow-spin-7: inherit;
+  --wheel-arrow-spin-8: inherit;
+  --wheel-arrow-spin-9: inherit;
+  --wheel-arrow-spin-10: inherit;
+  --wheel-spin-duration: inherit;
+  --wheel-spin-delay: inherit;
+  --wheel-spin-easing: inherit;
+  --wheel-arrow-segment-easing: inherit;
+
+  width: 100px;
+  height: 100px;
+  transform: rotate(var(--wheel-arrow-base-rotation));
+  transform-origin: center;
   opacity: 1;
-  top: 49px;
-  left: 287px;
+  top: -64px;
+  left: 208px;
   position: absolute;
   z-index: 6;
+}
+
+/* После спина сохраняем итоговый угол (совпадает с последним ключевым кадром). */
+.wheel-arrow.wheel-arrow--spin-settled {
+  transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-10, 0deg)));
+}
+
+.wheel-arrow.is-spinning {
+  animation: wheelArrowSpin var(--wheel-spin-duration) linear var(--wheel-spin-delay) 1 forwards;
+}
+
+@keyframes wheelArrowSpin {
+  0% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-0, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  10% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-1, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  20% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-2, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  30% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-3, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  40% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-4, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  50% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-5, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  60% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-6, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  70% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-7, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  80% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-8, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  90% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-9, 0deg)));
+    animation-timing-function: var(--wheel-arrow-segment-easing);
+  }
+
+  100% {
+    transform: rotate(calc(var(--wheel-arrow-base-rotation) + var(--wheel-arrow-spin-10, 0deg)));
+  }
 }
 
 .wheel-border {
