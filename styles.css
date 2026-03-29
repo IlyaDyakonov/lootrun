@@ -633,6 +633,141 @@ html {
   inset: 0;
 }
 
+/* Плавающие декорации: у каждого .wheel-decor-* свой полный набор --promo-* / --decor-tilt (как у .bag) */
+.wheel-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.wheel-decor-img {
+  position: absolute;
+  display: block;
+  height: auto;
+  transform-origin: center center;
+  top: var(--promo-y-from);
+  left: var(--promo-x-from);
+  transform: rotate(var(--decor-tilt)) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  animation: wheel-decor-float var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
+}
+
+@keyframes wheel-decor-float {
+  from {
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(var(--decor-tilt)) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  }
+  to {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(var(--decor-tilt)) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+  }
+}
+
+.wheel-decor-hearts {
+  width: 36px;
+  --decor-tilt: 0deg;
+  --promo-x-from: 60px;
+  --promo-y-from: 345px;
+  --promo-x-to: 60px;
+  --promo-y-to: 335px;
+  --promo-scale-from: 0.6;
+  --promo-scale-to: 0.8;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 80deg;
+  --promo-dur: 3s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+}
+
+.wheel-decor-diamonds {
+  width: 36px;
+  --decor-tilt: 0deg;
+  --promo-x-from: calc(50% - 28px);
+  --promo-y-from: 320px;
+  --promo-x-to: calc(50% - 28px);
+  --promo-y-to: 320px;
+  --promo-scale-from: 0.9;
+  --promo-scale-to: 0.9;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: -90deg;
+  --promo-dur: 3s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+}
+
+.wheel-decor-spades {
+  width: 36px;
+  --decor-tilt: 0deg;
+  --promo-x-from: calc(100% - 50px);
+  --promo-y-from: 463px;
+  --promo-x-to: calc(100% - 50px);
+  --promo-y-to: 435px;
+  --promo-scale-from: 0.5;
+  --promo-scale-to: 0.5;
+  --promo-rotate-from: -35deg;
+  --promo-rotate-to: 0deg;
+  --promo-dur: 3s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+}
+
+.wheel-decor-clubs {
+  width: 40px;
+  --decor-tilt: 0deg;
+  --promo-x-from: -2px;
+  --promo-y-from: 560px;
+  --promo-x-to: 7px;
+  --promo-y-to: 550px;
+  --promo-scale-from: 0.6;
+  --promo-scale-to: 0.6;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 40deg;
+  --promo-dur: 3s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+}
+
+.wheel-decor-fiska {
+  width: 72px;
+  --decor-tilt: 0deg;
+  --promo-x-from: calc(100% - 98px);
+  --promo-y-from: 323px;
+  --promo-x-to: calc(100% - 108px);
+  --promo-y-to: 325px;
+  --promo-scale-from: 0.85;
+  --promo-scale-to: 0.85;
+  --promo-rotate-from: 0deg;
+  --promo-rotate-to: 45deg;
+  --promo-dur: 3s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+}
+
+.wheel-decor-casino {
+  width: 108px;
+  --decor-tilt: -14deg;
+  --promo-x-from: -18px;
+  --promo-y-from: 375px;
+  --promo-x-to: -18px;
+  --promo-y-to: 350px;
+  --promo-scale-from: 0.95;
+  --promo-scale-to: 0.8;
+  --promo-rotate-from: 29deg;
+  --promo-rotate-to: 45deg;
+  --promo-dur: 3s;
+  --promo-ease: ease-in-out;
+  --promo-iter: infinite;
+  --promo-dir: alternate;
+}
+
 .hero-header-description-fine {
   width: var(--hero-desc-width);
   height: 54px;
@@ -1177,7 +1312,7 @@ section.wheel>img.case {
   transform: rotate(0deg);
   opacity: 1;
   margin-top: 4px;
-  gap: 4px;
+  gap: 10px;
   border-radius: 0;
   padding: 0;
   display: flex;
@@ -1237,7 +1372,7 @@ section.wheel>img.case {
 }
 
 .frame-66-year {
-  width: 34px;
+  width: 38px;
   height: 12px;
   transform: rotate(0deg);
   opacity: 1;
