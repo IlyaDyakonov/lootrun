@@ -121,6 +121,8 @@
 
   let spinStateActivated = false;
 
+  const WHEEL_RESULT_POPUP_DELAY_MS = 3000;
+
   const activateSpinStateUi = () => {
     if (spinStateActivated) return;
     spinStateActivated = true;
@@ -134,6 +136,7 @@
     const spinningBonusTwo = document.querySelector('.spinning-bonus-two');
     const spinningBonusContainer = document.querySelector('.spinning-bonus-container');
     const wheelFireworks = document.getElementById('wheelFireworks');
+    const wheelResultPopup = document.getElementById('wheelResultPopup');
     const sectors = document.getElementById('sectors');
     const wheelArrow = document.querySelector('.wheel-arrow');
 
@@ -223,6 +226,16 @@
           wheelFireworks.hidden = false;
           wheelFireworks.setAttribute('aria-hidden', 'false');
         }
+
+        if (wheelResultPopup) {
+          window.setTimeout(() => {
+            wheelResultPopup.hidden = false;
+            wheelResultPopup.setAttribute('aria-hidden', 'false');
+            requestAnimationFrame(() => {
+              wheelResultPopup.classList.add('is-open');
+            });
+          }, WHEEL_RESULT_POPUP_DELAY_MS);
+        }
       };
 
       const onSpinAnimationEnd = (e) => {
@@ -238,6 +251,72 @@
         showEndSectors();
       }, fallbackMs);
     }
+  };
+
+  const resetWheelToInitialState = () => {
+    spinStateActivated = false;
+
+    const wheelResultPopup = document.getElementById('wheelResultPopup');
+    if (wheelResultPopup) {
+      wheelResultPopup.classList.remove('is-open');
+      wheelResultPopup.hidden = true;
+      wheelResultPopup.setAttribute('aria-hidden', 'true');
+    }
+
+    const sectors = document.getElementById('sectors');
+    if (sectors) {
+      sectors.classList.remove('is-swapped', 'sectors-ended');
+    }
+
+    const wheelArrow = document.querySelector('.wheel-arrow');
+    if (wheelArrow) {
+      wheelArrow.classList.remove('is-spinning', 'wheel-arrow--spin-settled');
+    }
+
+    const spinButton = document.querySelector('.wheel-spin');
+    if (spinButton) {
+      spinButton.hidden = false;
+      spinButton.classList.remove('is-fade-out');
+    }
+
+    const normalDescription = document.querySelector(
+      '.hero-header-description-fine:not(.hero-header-description-fine-spinning)',
+    );
+    if (normalDescription) {
+      normalDescription.hidden = false;
+      normalDescription.classList.remove('is-fade-out');
+    }
+
+    const spinningDescription = document.querySelector('.hero-header-description-fine-spinning');
+    if (spinningDescription) {
+      spinningDescription.hidden = true;
+      spinningDescription.classList.remove('is-visible');
+    }
+
+    const wheelText = document.querySelector('.wheel-text');
+    if (wheelText) {
+      wheelText.hidden = false;
+      wheelText.classList.remove('is-fade-out');
+    }
+
+    const spinningBonusOne = document.querySelector('.spinning-bonus-one');
+    const spinningBonusTwo = document.querySelector('.spinning-bonus-two');
+    if (spinningBonusOne) spinningBonusOne.classList.remove('is-visible');
+    if (spinningBonusTwo) spinningBonusTwo.classList.remove('is-visible');
+
+    const spinningBonusContainer = document.querySelector('.spinning-bonus-container');
+    if (spinningBonusContainer) {
+      spinningBonusContainer.hidden = false;
+      spinningBonusContainer.classList.remove('is-fade-out');
+    }
+
+    const wheelFireworks = document.getElementById('wheelFireworks');
+    if (wheelFireworks) {
+      wheelFireworks.hidden = true;
+      wheelFireworks.setAttribute('aria-hidden', 'true');
+    }
+
+    if (spinButton) spinButton.focus();
   };
 
   // script defer => DOM уже готов, но оставим безопасный хук на случай другой загрузки
@@ -256,6 +335,13 @@
     spinButton.addEventListener('click', () => {
       activateSpinStateUi();
       void applyI18n();
+    });
+  }
+
+  const tryAgainButton = document.querySelector('.wheel-result-popup__box-button-try-again');
+  if (tryAgainButton) {
+    tryAgainButton.addEventListener('click', () => {
+      resetWheelToInitialState();
     });
   }
 

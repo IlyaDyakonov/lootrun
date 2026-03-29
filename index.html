@@ -156,21 +156,18 @@
         <footer class="footer">
             <div class="images-footer">
                 <div class="lang">
-                    <button
-                        id="langToggle"
-                        class="langToggle"
-                        type="button"
-                        aria-label="Language"
-                        aria-haspopup="listbox"
-                        aria-expanded="false"
-                    >
+                    <button id="langToggle" class="langToggle" type="button" aria-label="Language"
+                        aria-haspopup="listbox" aria-expanded="false">
                         <span class="langToggleLabel">EN</span>
                         <span class="langChevron" aria-hidden="true"></span>
                     </button>
                     <div id="langMenu" class="langMenu" role="listbox" aria-label="Language options" hidden>
-                        <button class="langOption" type="button" role="option" data-lang-option="en" aria-selected="true">EN</button>
-                        <button class="langOption" type="button" role="option" data-lang-option="uz" aria-selected="false">UZ</button>
-                        <button class="langOption" type="button" role="option" data-lang-option="ru" aria-selected="false">RU</button>
+                        <button class="langOption" type="button" role="option" data-lang-option="en"
+                            aria-selected="true">EN</button>
+                        <button class="langOption" type="button" role="option" data-lang-option="uz"
+                            aria-selected="false">UZ</button>
+                        <button class="langOption" type="button" role="option" data-lang-option="ru"
+                            aria-selected="false">RU</button>
                     </div>
                 </div>
                 <span class="frame-66">
@@ -179,6 +176,28 @@
                 </span>
             </div>
         </footer>
+
+        <div id="wheelResultPopup" class="wheel-result-popup" hidden aria-hidden="true" aria-modal="true" role="dialog">
+            <div class="wheel-result-popup__box">
+                <div class="wheel-result-popup__box-title">
+                    <span class="wheel-result-popup__box-title-text" data-i18n="unlock_youve_unlocked"></span>
+                    <span class="wheel-result-popup__box-title-text" data-i18n="unlock_a_sweet_bonus"></span>
+                </div>
+                <div class="wheel-result-popup__box-content">
+                    <div class="wheel-result-popup__box-content-text-one" data-i18n="unlock_up_to"></div>
+                    <div class="wheel-result-popup__box-content-text-two" data-i18n="unlock_percent"></div>
+                    <div class="wheel-result-popup__box-content-text-three" data-i18n="unlock_on_first"></div>
+                    <div class="wheel-result-popup__box-content-text-four" data-i18n="unlock_deposit_at"></div>
+                </div>
+                <div class="wheel-result-popup__box-button">
+                    <div class="wheel-result-popup__box-button-claim">
+                        <button class="wheel-result-popup__box-button-claim-bonus" data-i18n="claim_bonus_button"></button>
+                        <button type="button" class="wheel-result-popup__box-button-try-again" data-i18n="try_again_button"></button>
+                    </div>
+                    <div class="wheel-result-popup__box-button-message-text" data-i18n="bonus_activated_after_registration_and_first_deposit"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="languages.inline.js"></script>
