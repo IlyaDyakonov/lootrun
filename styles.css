@@ -50,6 +50,21 @@ a.loot-run-link {
   --hero-desc-width: 310px;
 }
 
+/* Фоновый слой страницы: декоративные элементы без влияния на layout */
+.page-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.page-bg-image {
+  position: absolute;
+  display: block;
+  max-width: none;
+  pointer-events: none;
+}
+
 .brand {
   width: 104px;
   height: 24px;
