@@ -277,6 +277,7 @@ a.loot-run-link {
   padding: 16px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   /* background: linear-gradient(132deg, #17181E 12%, #17181E 38%, #1B2240 100%); */
 }
 
