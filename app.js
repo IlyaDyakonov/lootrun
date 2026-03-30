@@ -96,6 +96,44 @@
     }
   };
 
+  const LOOT_RUN_URL = 'https://loot.run/';
+
+  const appendLootRunLinkified = (el, text) => {
+    el.textContent = '';
+    const re = /loot\.run/gi;
+    let last = 0;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) {
+        el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      }
+      const a = document.createElement('a');
+      a.href = LOOT_RUN_URL;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'loot-run-link';
+      a.textContent = m[0];
+      el.appendChild(a);
+      last = re.lastIndex;
+    }
+    if (last < text.length) {
+      el.appendChild(document.createTextNode(text.slice(last)));
+    }
+  };
+
+  const setI18nElementText = (el, value) => {
+    const tag = el.tagName;
+    if (tag === 'BUTTON' || tag === 'INPUT') {
+      el.textContent = value;
+      return;
+    }
+    if (!/loot\.run/i.test(value)) {
+      el.textContent = value;
+      return;
+    }
+    appendLootRunLinkified(el, value);
+  };
+
   const applyI18n = async (langOverride) => {
     const targets = document.querySelectorAll('[data-i18n]');
     if (!targets.length) return;
@@ -108,7 +146,7 @@
       targets.forEach((el) => {
         const key = el.getAttribute('data-i18n');
         const value = languages?.[lang]?.[key];
-        if (typeof value === 'string') el.textContent = value;
+        if (typeof value === 'string') setI18nElementText(el, value);
       });
     } catch (e) {
       console.warn('Failed to load languages.json', {

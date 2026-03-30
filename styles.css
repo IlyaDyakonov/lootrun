@@ -19,6 +19,12 @@ html {
   overflow-x: hidden;
 }
 
+/* Ссылки на loot.run из i18n (app.js) */
+a.loot-run-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .page {
   position: relative;
   width: 393px;
@@ -965,10 +971,10 @@ section.wheel>div.case {
   --wheel-arrow-spin-1: 10deg;
   --wheel-arrow-spin-2: 10deg;
   --wheel-arrow-spin-3: -10deg;
-  --wheel-arrow-spin-4: -10deg;
-  --wheel-arrow-spin-5: -20deg;
+  --wheel-arrow-spin-4: -15deg;
+  --wheel-arrow-spin-5: -22deg;
   --wheel-arrow-spin-6: -10deg;
-  --wheel-arrow-spin-7: -20deg;
+  --wheel-arrow-spin-7: -22deg;
   --wheel-arrow-spin-8: -10deg;
   --wheel-arrow-spin-9: -5deg;
   --wheel-arrow-spin-10: 0deg;
@@ -1541,6 +1547,8 @@ section.wheel>img.case {
   background: #1e1e2a;
   color: #fff;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
   transform: scale(0.94) translateY(20px);
   opacity: 0;
   transition:
@@ -1740,4 +1748,29 @@ section.wheel>img.case {
   line-height: 1.25;
   letter-spacing: 0;
   color: rgb(255 255 255 / 60%);
+}
+
+.wheel-result-popup-ellipse24,
+.wheel-result-popup-ellipse25 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  opacity: 0.75;
+  transform: rotate(0deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wheel-result-popup-ellipse24 {
+  top: 142px;
+  left: 457px;
+  z-index: 5;
+  border-top-left-radius: 25px;
+}
+
+.wheel-result-popup-ellipse25 {
+  top: 387px;
+  right: 457px;
+  z-index: 5;
+  border-bottom-right-radius: 25px;
 }
