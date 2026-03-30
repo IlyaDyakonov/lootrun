@@ -178,7 +178,7 @@
         </footer>
 
         <div id="wheelResultPopup" class="wheel-result-popup" hidden aria-hidden="true" aria-modal="true" role="dialog">
-            <div class="wheel-result-popup__box">
+            <div class="wheel-result-popup__box wheel-result-popup__box-bonus">
                 <div class="wheel-result-popup__box-title">
                     <span class="wheel-result-popup__box-title-text" data-i18n="unlock_youve_unlocked"></span>
                     <span class="wheel-result-popup__box-title-text" data-i18n="unlock_a_sweet_bonus"></span>
@@ -191,24 +191,63 @@
                 </div>
                 <div class="wheel-result-popup__box-button">
                     <div class="wheel-result-popup__box-button-claim">
-                        <button class="wheel-result-popup__box-button-claim-bonus" data-i18n="claim_bonus_button"></button>
-                        <button type="button" class="wheel-result-popup__box-button-try-again" data-i18n="try_again_button"></button>
+                        <button class="wheel-result-popup__box-button-claim-bonus"
+                            data-i18n="claim_bonus_button"></button>
+                        <button type="button" class="wheel-result-popup__box-button-try-again"
+                            data-i18n="try_again_button"></button>
                     </div>
-                    <div class="wheel-result-popup__box-button-message-text" data-i18n="bonus_activated_after_registration_and_first_deposit"></div>
+                    <div class="wheel-result-popup__box-button-message-text"
+                        data-i18n="bonus_activated_after_registration_and_first_deposit">
+                    </div>
+                </div>
+                <img class="wheel-result-popup-ellipse24" src="picture/Ellipse24.png" alt="" aria-hidden="true" />
+                <img class="wheel-result-popup-ellipse25" src="picture/Ellipse25.png" alt="" aria-hidden="true" />
+            </div>
+
+            <div class="wheel-result-popup__box wheel-result-popup__box-steps" hidden aria-hidden="true">
+                <img src="picture/sweet_bananza.png" alt="" class="sweet-bananza-popup">
+                <div class="wheel-result-popup__box-steps-content">
+                    <div class="wheel-result-popup__box-steps-content-title">
+                        <span class="wheel-result-popup__box-steps-content-title-text" data-i18n="almost_done"></span>
+                    </div>
+                    <div class="wheel-result-popup__box-steps-content-text">
+                        <span class="wheel-result-popup__box-steps-content-text-text" data-i18n="steps_intro"></span>
+                    </div>
+                </div>
+
+                <div class="wheel-result-popup__box-steps-claim">
+                    <button class="wheel-result-popup__box-steps-continue-to" data-i18n="continue_to"></button>
+                </div>
+
+                <img class="wheel-result-popup__box-steps-ellipse24" src="picture/Ellipse24.png" alt=""
+                    aria-hidden="true" />
+                <img class="wheel-result-popup__box-steps-ellipse25" src="picture/Ellipse25.png" alt=""
+                    aria-hidden="true" />
+
+                <div class="wheel-result-popup__box-steps-three-steps">
+                    <div class="wheel-result-popup__box-steps-three-steps-item">
+                        <img class="wheel-result-popup__box-steps-bluecoin" src="picture\bluecoin.png" alt="bluecoin1">
+                        <span class="wheel-result-popup__box-steps-three-steps-item-text" data-i18n="step1_title"></span>
+                        <span class="wheel-result-popup__box-steps-three-steps-item-text-text" data-i18n="step1_text"></span>
+                    </div>
+                    <div class="wheel-result-popup__box-steps-three-steps-item">
+                        <img class="wheel-result-popup__box-steps-bluecoin" src="picture\bluecoin2.png" alt="bluecoin2">
+                        <span class="wheel-result-popup__box-steps-three-steps-item-text" data-i18n="step2_title"></span>
+                        <span class="wheel-result-popup__box-steps-three-steps-item-text-text" data-i18n="step2_text"></span>
+                    </div>
+                    <div class="wheel-result-popup__box-steps-three-steps-item">
+                        <img class="wheel-result-popup__box-steps-bluecoin" src="picture\bluecoin3.png" alt="bluecoin3">
+                        <span class="wheel-result-popup__box-steps-three-steps-item-text" data-i18n="step3_title"></span>
+                        <span class="wheel-result-popup__box-steps-three-steps-item-text-text" data-i18n="step3_text"></span>
+                    </div>
+                </div>
+
+                <div class="wheel-result-popup__box-button-message-text">
+                    <span class="wheel-result-popup__box-button-message-text-text" data-i18n="redirect_message"></span>
+                    <span class="wheel-result-popup__box-button-message-text-text" data-i18n="offer_new_players_only"></span>
                 </div>
             </div>
-            <img
-                class="wheel-result-popup-ellipse24"
-                src="picture/Ellipse24.png"
-                alt=""
-                aria-hidden="true"
-            />
-            <img
-                class="wheel-result-popup-ellipse25"
-                src="picture/Ellipse25.png"
-                alt=""
-                aria-hidden="true"
-            />
+
         </div>
     </div>
 

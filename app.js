@@ -121,10 +121,71 @@
     }
   };
 
+  /** en: deposit · ru: депозит · uz: depozit */
+  const DEPOSIT_WORD_RE = /(deposit|depozit|депозит)/gi;
+
+  const appendDepositHighlighted = (el, text) => {
+    el.textContent = '';
+    let last = 0;
+    let m;
+    const re = new RegExp(DEPOSIT_WORD_RE.source, DEPOSIT_WORD_RE.flags);
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) {
+        el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      }
+      const span = document.createElement('span');
+      span.className = 'i18n-deposit-highlight';
+      span.textContent = m[0];
+      el.appendChild(span);
+      last = re.lastIndex;
+    }
+    if (last < text.length) {
+      el.appendChild(document.createTextNode(text.slice(last)));
+    }
+  };
+
+  /** step3_text: +500% bonus, Free Spins, Sweet Bonanza (+ ru/uz эквиваленты) */
+  const STEP3_HIGHLIGHT_RE =
+    /(\+500%\s*gacha\s*bonus|\+500%\s*bonus|\+500%\s*бонуса|Free\s+Spins|фриспины|bepul\s+aylantirishlar|Sweet\s+Bonanza)/gi;
+
+  const appendStep3Highlighted = (el, text) => {
+    el.textContent = '';
+    let last = 0;
+    let m;
+    const re = new RegExp(STEP3_HIGHLIGHT_RE.source, STEP3_HIGHLIGHT_RE.flags);
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) {
+        el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      }
+      const span = document.createElement('span');
+      span.className = 'i18n-step3-highlight';
+      span.textContent = m[0];
+      el.appendChild(span);
+      last = re.lastIndex;
+    }
+    if (last < text.length) {
+      el.appendChild(document.createTextNode(text.slice(last)));
+    }
+  };
+
   const setI18nElementText = (el, value) => {
     const tag = el.tagName;
     if (tag === 'BUTTON' || tag === 'INPUT') {
       el.textContent = value;
+      return;
+    }
+    const i18nKey = el.getAttribute('data-i18n');
+    if (
+      i18nKey === 'step3_text' &&
+      /(\+500%\s*gacha\s*bonus|\+500%\s*bonus|\+500%\s*бонуса|Free\s+Spins|фриспины|bepul\s+aylantirishlar|Sweet\s+Bonanza)/i.test(
+        value,
+      )
+    ) {
+      appendStep3Highlighted(el, value);
+      return;
+    }
+    if (i18nKey === 'step2_text' && /(deposit|depozit|депозит)/i.test(value)) {
+      appendDepositHighlighted(el, value);
       return;
     }
     if (!/loot\.run/i.test(value)) {
@@ -160,6 +221,28 @@
   let spinStateActivated = false;
 
   const WHEEL_RESULT_POPUP_DELAY_MS = 3000;
+
+  /**
+   * Переключение внутренних экранов результата:
+   *  - bonus panel: .wheel-result-popup__box-bonus
+   *  - steps panel: .wheel-result-popup__box-steps
+   */
+  const setWheelResultPopupInnerView = (showBonusPanel) => {
+    const bonusPanel = document.querySelector('.wheel-result-popup__box-bonus');
+    const stepsPanel = document.querySelector('.wheel-result-popup__box-steps');
+
+    if (bonusPanel) {
+      const shouldHideBonus = !showBonusPanel;
+      bonusPanel.hidden = shouldHideBonus;
+      bonusPanel.setAttribute('aria-hidden', shouldHideBonus ? 'true' : 'false');
+    }
+
+    if (stepsPanel) {
+      const shouldHideSteps = showBonusPanel;
+      stepsPanel.hidden = shouldHideSteps;
+      stepsPanel.setAttribute('aria-hidden', shouldHideSteps ? 'true' : 'false');
+    }
+  };
 
   const activateSpinStateUi = () => {
     if (spinStateActivated) return;
@@ -267,6 +350,7 @@
 
         if (wheelResultPopup) {
           window.setTimeout(() => {
+            setWheelResultPopupInnerView(true); // показываем бонус-экран по умолчанию
             wheelResultPopup.hidden = false;
             wheelResultPopup.setAttribute('aria-hidden', 'false');
             requestAnimationFrame(() => {
@@ -300,6 +384,7 @@
       wheelResultPopup.hidden = true;
       wheelResultPopup.setAttribute('aria-hidden', 'true');
     }
+    setWheelResultPopupInnerView(true); // сброс на бонус-экран
 
     const sectors = document.getElementById('sectors');
     if (sectors) {
@@ -380,6 +465,23 @@
   if (tryAgainButton) {
     tryAgainButton.addEventListener('click', () => {
       resetWheelToInitialState();
+    });
+  }
+
+  const claimBonusButton = document.querySelector('.wheel-result-popup__box-button-claim-bonus');
+  if (claimBonusButton) {
+    claimBonusButton.type = 'button';
+    claimBonusButton.addEventListener('click', () => {
+      // скрываем bonus, показываем steps
+      setWheelResultPopupInnerView(false);
+    });
+  }
+
+  const continueToButton = document.querySelector('.wheel-result-popup__box-steps-continue-to');
+  if (continueToButton) {
+    continueToButton.type = 'button';
+    continueToButton.addEventListener('click', () => {
+      window.open(LOOT_RUN_URL, '_blank', 'noopener,noreferrer');
     });
   }
 
