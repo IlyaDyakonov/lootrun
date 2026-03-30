@@ -1723,7 +1723,9 @@ section.wheel>img.case {
   gap: 1px;
   padding: 0px 16px 24px;
   border-radius: 24px;
-  background: #1e1e2a;
+  background:
+    linear-gradient(0deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.04)),
+    rgb(13 14 16 / 0.8);
   color: #fff;
   flex-shrink: 0;
   position: relative;
@@ -1735,6 +1737,7 @@ section.wheel>img.case {
     opacity 0.35s ease;
   align-items: center;
   justify-content: center;
+  -webkit-backdrop-filter: blur(64px);
   backdrop-filter: blur(64px);
 }
 
