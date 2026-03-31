@@ -2473,6 +2473,73 @@ section.wheel>img.case-desktop {
     transform: scale(var(--desktop-border-scale));
   }
 
+  /* Desktop positions for floating wheel decor (animation behavior unchanged) */
+  .wheel-decor-hearts {
+    --promo-x-from: calc(50% + 10px);
+    --promo-y-from: 320px;
+    --promo-x-to: calc(50% + 25px);
+    --promo-y-to: 327px;
+    --promo-scale-from: 0.9;
+    --promo-scale-to: 0.8;
+    --promo-rotate-from: -170deg;
+    --promo-rotate-to: -190deg;
+  }
+
+  .wheel-decor-diamonds {
+    --promo-x-from: calc(40% - 40px);
+    --promo-y-from: 340px;
+    --promo-x-to: calc(40% - 40px);
+    --promo-y-to: 340px;
+    --promo-scale-from: 1.1;
+    --promo-scale-to: 1.4;
+    --promo-rotate-from: -5deg;
+    --promo-rotate-to: -45deg;
+  }
+
+  .wheel-decor-spades {
+    --promo-x-from: calc(50% + 160px);
+    --promo-y-from: 400px;
+    --promo-x-to: calc(50% + 160px);
+    --promo-y-to: 390px;
+    --promo-scale-from: 0.5;
+    --promo-scale-to: 0.6;
+    --promo-rotate-from: 0deg;
+    --promo-rotate-to: 20deg;
+  }
+
+  .wheel-decor-clubs {
+    --promo-x-from: 500px;
+    --promo-y-from: 480px;
+    --promo-x-to: 488px;
+    --promo-y-to: 490px;
+    --promo-scale-from: 0.8;
+    --promo-scale-to: 0.6;
+    --promo-rotate-from: 0deg;
+    --promo-rotate-to: 25deg;
+  }
+
+  .wheel-decor-fiska {
+    --promo-x-from: calc(50% + 145px);
+    --promo-y-from: 300px;
+    --promo-x-to: calc(50% + 145px);
+    --promo-y-to: 310px;
+    --promo-scale-from: 1;
+    --promo-scale-to: 0.8;
+    --promo-rotate-from: -5deg;
+    --promo-rotate-to: 18deg;
+  }
+
+  .wheel-decor-casino {
+    --promo-x-from: 435px;
+    --promo-y-from: 370px;
+    --promo-x-to: 427px;
+    --promo-y-to: 370px;
+    --promo-scale-from: 1.2;
+    --promo-scale-to: 0.9;
+    --promo-rotate-from: 45deg;
+    --promo-rotate-to: 30deg;
+  }
+
   section.wheel>div.wheel-case .sectors {
     width: var(--desktop-sectors-width);
     height: var(--desktop-sectors-height);
