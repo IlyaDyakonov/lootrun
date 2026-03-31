@@ -1,6 +1,37 @@
 @font-face {
   font-family: "Google Sans";
-  src: local("Google Sans"), local("Product Sans");
+  src:
+    local("Google Sans"),
+    local("Product Sans"),
+    url("fonts/GoogleSans-Regular.woff2") format("woff2"),
+    url("fonts/GoogleSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Google Sans";
+  src:
+    local("Google Sans Medium"),
+    local("Product Sans Medium"),
+    url("fonts/GoogleSans-Medium.woff2") format("woff2"),
+    url("fonts/GoogleSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Google Sans";
+  src:
+    local("Google Sans Bold"),
+    local("Product Sans Bold"),
+    url("fonts/GoogleSans-Bold.woff2") format("woff2"),
+    url("fonts/GoogleSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
@@ -645,7 +676,7 @@ a.loot-run-link {
 }
 
 .spins {
-  width: 172.5px;
+  width: 210.5px;
   /* height: 100px; */
   position: relative;
   overflow: hidden;
@@ -653,7 +684,7 @@ a.loot-run-link {
   gap: 4px;
   transform: rotate(0deg);
   opacity: 1;
-  padding: 16px;
+  /* padding: 16px; */
   display: flex;
   align-items: stretch;
   flex-direction: column;
@@ -723,7 +754,7 @@ a.loot-run-link {
 }
 
 .bonuses {
-  width: 172.5px;
+  width: 210.5px;
   /* height: 100px; */
   position: relative;
   overflow: hidden;
@@ -731,7 +762,7 @@ a.loot-run-link {
   gap: 4px;
   transform: rotate(0deg);
   opacity: 1;
-  padding: 16px;
+  /* padding: 16px; */
   display: flex;
   align-items: stretch;
   flex-direction: column;
@@ -1841,6 +1872,7 @@ section.wheel>img.case-desktop {
   width: 298px;
   height: 63px;
   transform: rotate(0deg);
+  margin-top: -10px;
   opacity: 1;
   font-family: "Google Sans", sans-serif;
   font-weight: 400;
@@ -1959,7 +1991,7 @@ section.wheel>img.case-desktop {
 
 .wheel-result-popup__box-button-message-text {
   box-sizing: border-box;
-  width: 100%;
+  width: 60%;
   /* max-width: 211px; */
   align-self: center;
   text-align: center;

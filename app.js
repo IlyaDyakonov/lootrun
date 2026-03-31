@@ -442,15 +442,56 @@
     if (spinButton) spinButton.focus();
   };
 
+  const formatCounter = (num) =>
+    Math.max(0, Math.floor(num))
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+  const animateCounter = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const raw = (el.textContent || '').replace(/[^\d]/g, '');
+    const target = Number.parseInt(raw, 10);
+    if (!Number.isFinite(target) || target <= 0) return;
+
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      el.textContent = formatCounter(target);
+      return;
+    }
+
+    // 3 seconds per each 1000.
+    const durationMs = Math.max(300, (target / 1000) * 3000);
+    const start = performance.now();
+
+    const step = (now) => {
+      const t = Math.min((now - start) / durationMs, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = formatCounter(Math.round(target * eased));
+      if (t < 1) requestAnimationFrame(step);
+    };
+
+    el.textContent = '0';
+    requestAnimationFrame(step);
+  };
+
+  const animateStatsCounters = () => {
+    animateCounter('spinsToday');
+    animateCounter('bonusesClaimed');
+  };
+
   // script defer => DOM уже готов, но оставим безопасный хук на случай другой загрузки
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       renderWheelSectors();
       void applyI18n();
+      animateStatsCounters();
     });
   } else {
     renderWheelSectors();
     void applyI18n();
+    animateStatsCounters();
   }
 
   const spinButton = document.querySelector('.wheel-spin');
