@@ -2508,9 +2508,9 @@ section.wheel>img.case-desktop {
   }
 
   .wheel-decor-clubs {
-    --promo-x-from: 500px;
+    --promo-x-from: calc(50% - 220px);
     --promo-y-from: 480px;
-    --promo-x-to: 488px;
+    --promo-x-to: calc(50% - 232px);
     --promo-y-to: 490px;
     --promo-scale-from: 0.8;
     --promo-scale-to: 0.6;
@@ -2530,9 +2530,9 @@ section.wheel>img.case-desktop {
   }
 
   .wheel-decor-casino {
-    --promo-x-from: 435px;
+    --promo-x-from: calc(50% - 285px);
     --promo-y-from: 370px;
-    --promo-x-to: 427px;
+    --promo-x-to: calc(50% - 293px);
     --promo-y-to: 370px;
     --promo-scale-from: 1.2;
     --promo-scale-to: 0.9;
@@ -2560,7 +2560,8 @@ section.wheel>img.case-desktop {
 
   .banners {
     /* Desktop banners: edit these directly */
-    left: 140px;
+    position: absolute;
+    left: max(16px, calc(50% - 580px));
     top: 336px;
     transform: scale(0.9);
     transform-origin: top left;
@@ -2830,6 +2831,14 @@ section.wheel>img.case-desktop {
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
+
+  .shadow-9 {
+    --shadow-top: 820px;
+      --shadow-left: 75%;
+    --shadow-width: 300px;
+      --shadow-translate-x: -50%;
+      --shadow-translate-y: 0;
+    }
 }
 
 /* Десктоп 2: width ≥ 1920px */
