@@ -96,6 +96,12 @@ a.loot-run-link {
   pointer-events: none;
 }
 
+/* Hidden by default; enabled only in desktop media block */
+.shadow-desktop,
+.rect-desktop {
+  display: none;
+}
+
 .shadow-desktop {
   display: none;
 }
@@ -2607,6 +2613,81 @@ section.wheel>img.case-desktop {
     width: var(--shadow-width, 300px);
     height: auto;
     transform: translate(var(--shadow-translate-x, 0), var(--shadow-translate-y, 0));
+  }
+
+  .rect-desktop {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    top: var(--rect-top, 0px);
+    left: var(--rect-left, 0px);
+    width: var(--rect-width, 300px);
+    height: var(--rect-height, 300px);
+    transform: translate(var(--rect-translate-x, 0), var(--rect-translate-y, 0)) rotate(var(--rect-rotate, 0deg));
+  }
+
+  /* Rectangle #1: Rectangle32.png */
+  .rect-1 {
+    --rect-top: 0px;
+    --rect-left: 50%;
+    --rect-width: 740px;
+    --rect-height: auto;
+    --rect-translate-x: -50%;
+    --rect-translate-y: 0;
+  }
+
+  /* Rectangle #2: Rectangle33.png */
+  .rect-2 {
+    --rect-top: 0px;
+    --rect-left: 60%;
+    --rect-width: 258px;
+    --rect-height: 900px;
+    --rect-translate-x: -35%;
+    --rect-translate-y: 0;
+    --rect-rotate: 15deg;
+  }
+
+  /* Rectangle #3: Rectangle34.png */
+  .rect-3 {
+    --rect-top: 0px;
+    --rect-left: 40%;
+    --rect-width: 258px;
+    --rect-height: 900px;
+    --rect-translate-x: -65%;
+    --rect-translate-y: 0;
+    --rect-rotate: -15deg;
+  }
+
+  /* Rectangle #4: Rectangle35.png */
+  .rect-4 {
+    --rect-top: 0px;
+    --rect-left: 38%;
+    --rect-width: 258px;
+    --rect-height: 900px;
+    --rect-translate-x: -40%;
+    --rect-translate-y: 0;
+    --rect-rotate: -7deg;
+  }
+
+  /* Rectangle #5: Rectangle36.png */
+  .rect-5 {
+    --rect-top: 0px;
+    --rect-left: 62%;
+    --rect-width: 258px;
+    --rect-height: 900px;
+    --rect-translate-x: -60%;
+    --rect-translate-y: 0;
+    --rect-rotate: 7deg;
+  }
+
+  /* Rectangle #6: Rectangle37.png */
+  .rect-6 {
+    --rect-top: -50px;
+    --rect-left: 50%;
+    --rect-width: 250px;
+    --rect-height: 900px;
+    --rect-translate-x: -50%;
+    --rect-translate-y: 0;
   }
   
   /* Shadow #1: wheelshadow.png */
