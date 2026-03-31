@@ -2317,7 +2317,7 @@ section.wheel>img.case-desktop {
   }
 
   .footer {
-    width: 85%;
+    width: 92%;
     height: 28px;
     justify-content: space-between;
     transform: translateY(var(--desktop-footer-offset-y));
@@ -2395,6 +2395,19 @@ section.wheel>img.case-desktop {
     width: 460px;
   }
 
+  .wheel-result-popup {
+    inset: auto;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 200dvh;
+    margin-left: -50vw;
+  }
+
+  .wheel-result-popup__box-bonus {
+    margin-top: 150px;
+  }
+  
   .girl {
     position: absolute;
     top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y));
@@ -2471,6 +2484,24 @@ section.wheel>img.case-desktop {
     top: var(--desktop-border-top);
     left: var(--desktop-border-left);
     transform: scale(var(--desktop-border-scale));
+  }
+
+  /* Desktop offset for wheel fireworks (keeps mobile positions unchanged) */
+  .wheel-fireworks {
+    position: absolute;
+    inset: 0;
+    --desktop-fireworks-anchor-x: 52%;
+    --desktop-fireworks-anchor-y: 300px;
+    --wheel-firework-1-width: 220px;
+    --wheel-firework-2-width: 100px;
+    --wheel-firework-3-width: 150px;
+    --wheel-firework-1-left: calc(var(--desktop-fireworks-anchor-x) - 300px);
+    --wheel-firework-1-top: calc(var(--desktop-fireworks-anchor-y) + 0px);
+    --wheel-firework-2-left: calc(var(--desktop-fireworks-anchor-x) - 55px);
+    --wheel-firework-2-top: calc(var(--desktop-fireworks-anchor-y) - 10px);
+    --wheel-firework-3-left: calc(var(--desktop-fireworks-anchor-x) + 70px);
+    --wheel-firework-3-top: calc(var(--desktop-fireworks-anchor-y) + 20px);
+    z-index: -10;
   }
 
   /* Desktop positions for floating wheel decor (animation behavior unchanged) */
@@ -2780,9 +2811,9 @@ section.wheel>img.case-desktop {
   
   /* Shadow #3: Ellipse23.png */
   .shadow-3 {
-  --shadow-top: 760px;
+  --shadow-top: 700px;
     --shadow-left: 50%;
-  --shadow-width: 1440px;
+  --shadow-width: 1840px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
@@ -2807,7 +2838,7 @@ section.wheel>img.case-desktop {
   
   /* Shadow #6: Ellipse12.png */
   .shadow-6 {
-  --shadow-top: 965px;
+  --shadow-top: 975px;
   --shadow-left: 50%;
   --shadow-width: 1180px;
     --shadow-translate-x: -50%;
@@ -2816,7 +2847,7 @@ section.wheel>img.case-desktop {
   
   /* Shadow #7: Ellipse11.png */
   .shadow-7 {
-  --shadow-top: 880px;
+  --shadow-top: 895px;
   --shadow-left: 50%;
   --shadow-width: 1440px;
     --shadow-translate-x: -50%;
@@ -2834,7 +2865,7 @@ section.wheel>img.case-desktop {
 
   .shadow-9 {
     --shadow-top: 820px;
-      --shadow-left: 75%;
+      --shadow-left: 70%;
     --shadow-width: 300px;
       --shadow-translate-x: -50%;
       --shadow-translate-y: 0;
