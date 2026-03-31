@@ -65,6 +65,11 @@ a.loot-run-link {
   pointer-events: none;
 }
 
+/* Desktop-only girl image */
+.girl-desktop {
+  display: none;
+}
+
 .brand {
   width: 104px;
   height: 24px;
@@ -1076,7 +1081,7 @@ a.loot-run-link {
   transition: opacity 0.3s ease;
 }
 
-.case {
+img.case-desktop {
   position: absolute;
   width: 192px;
   height: 170px;
@@ -1086,7 +1091,7 @@ a.loot-run-link {
   opacity: 1;
 }
 
-section.wheel>div.case {
+section.wheel>div.wheel-case {
   position: absolute;
   top: 388px;
   left: 50%;
@@ -1117,7 +1122,7 @@ section.wheel>div.case {
   --wheel-arrow-segment-easing: cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
-section.wheel>img.case {
+section.wheel>img.case-desktop {
   position: absolute;
   top: 648px;
   left: 170px;
@@ -2182,3 +2187,321 @@ section.wheel>img.case {
 .wheel-result-popup__box-steps-three-steps-item:last-child .wheel-result-popup__box-steps-three-steps-item-text-text {
   margin-top: -8px;
 }
+
+
+
+/* =============================================================================
+  Три полосы по ширине viewport (мобильная база выше без @media — до 1079px):
+  • 0–1079px     — только дефолтные стили (мобилка 393px)
+  • 1080–1919px  — первый десктоп
+  • 1920px+      — второй десктоп (упор Full HD по ширине)
+  Высота/портрет не делят полосы: 1080×1920 попадает в первый десктоп по ширине.
+   ============================================================================= */
+
+/* Общее для обоих десктопов */
+/* @media screen and (min-width: 1080px) {
+  body {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page-bg-layer {
+    transform-origin: top center;
+  }
+
+  .page-bg-image-desktop-rect {
+    display: block;
+    left: 50% !important;
+    width: min(70vw, 1440px) !important;
+    transform: translateX(-50%);
+  }
+
+  .page>.layout {
+    width: 100%;
+    min-height: 0;
+  }
+} */
+
+/* Десктоп 1: 1080px ≤ width ≤ 1919px (макет дизайнера 1440×1024 — max ширина канвы) */
+@media screen and (min-width: 1080px) {
+
+  /* @media screen and (min-width: 1080px) and (max-width: 1919px) { */
+  body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .page {
+    width: min(100vw, 1440px);
+    max-width: 1440px;
+    margin-inline: auto;
+    transform: translateY(-70px);
+    min-height: 100vh;
+    min-height: 100dvh;
+    --layout-id: desktop-1080-1919;
+    --design-w: 1440;
+    --design-h: 1024;
+    --layout-safe-inline: clamp(24px, 3vw, 56px);
+    --layout-safe-block: clamp(24px, 3vh, 48px);
+    --layout-scale: calc(min(100vw, 1440px) / 393);
+    /* Shared desktop anchor for wheel + linked elements */
+    --wheel-anchor-x: 50%;
+    --wheel-anchor-y: 388px;
+    --wheel-shift-x: 0px;
+    --wheel-shift-y: 0px;
+    --desktop-case-img-offset-x: 10px;
+    --desktop-case-img-offset-y: 357px;
+    --desktop-girl-offset-x: 115px;
+    --desktop-girl-offset-y: -145px;
+  }
+
+  .brand {
+    transform: translateY(75px);
+  }
+
+  .footer {
+    width: 97%;
+    height: 28px;
+    justify-content: space-between;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  /* Desktop headline: words keep natural width, rows stay tight */
+  .hero-header-fine {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    display: block;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .hero-header-fine>span {
+    display: inline;
+    width: auto;
+    white-space: nowrap;
+    font-family: "Google Sans", sans-serif;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 3%;
+    text-align: center;
+    text-transform: uppercase;
+    /* margin-left: 100px; */
+  }
+
+  /* New line after prefix:
+    row 1 -> brand + prefix
+    row 2 -> spin_for + free_spins */
+  .hero-header-prefix::after {
+    content: "\A";
+    white-space: pre;
+  }
+
+  .hero-header-brand,
+  .hero-header-spin-for {
+    margin-right: 8px;
+  }
+
+  .center-image-desktop {
+    /* left: 50% !important;
+    transform: translateX(-50%); */
+    display: none
+  }
+
+  /* Desktop-only background image layer */
+  .page-bg-image-desktop-rect {
+    display: none;
+  }
+
+  .wheelFooter {
+    width: 70%;
+  }
+
+  .hero-header-description-fine {
+    width: max-content;
+    max-width: calc(100% - 32px);
+    height: auto;
+    white-space: nowrap;
+  }
+
+  .wheel-text-two {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .wheel-text {
+    top: 885px;
+  }
+
+  .girl {
+    position: absolute;
+    top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y));
+    left: calc(var(--wheel-anchor-x) + var(--wheel-shift-x));
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .girl-desktop {
+    display: block;
+    position: absolute;
+    top: var(--desktop-girl-offset-y);
+    left: var(--desktop-girl-offset-x);
+    width: 310px;
+    height: auto;
+  }
+
+  /* Main wheel wrapper (section.wheel > div.wheel-case) */
+  section.wheel > div.wheel-case {
+    top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y));
+    left: calc(var(--wheel-anchor-x) + var(--wheel-shift-x));
+    transform: translateX(-50%);
+
+    /* Desktop tuning for wheel internals */
+    --desktop-btn-spin-size: 110px;
+    --desktop-btn-spin-top: 116px;
+    --desktop-btn-spin-left: 139px;
+    --desktop-arrow-size: 120px;
+    --desktop-arrow-top: -70px;
+    --desktop-arrow-left: 215px;
+    --desktop-border-width: 980px;
+    --desktop-border-height: 930px;
+    --desktop-border-scale: 0.62;
+    --desktop-border-top: -72px;
+    --desktop-border-left: -110px;
+    --desktop-sectors-width: 700px;
+    --desktop-sectors-height: 700px;
+    --desktop-sectors-scale: 0.62;
+    --desktop-sectors-top: -50px;
+    --desktop-sectors-left: -20px;
+    --desktop-sectors-bg-width: 620px;
+    --desktop-sectors-bg-height: 620px;
+    /* Keep sectors graphic centered while rotating; tweak via offsets if needed */
+    --desktop-sectors-bg-offset-x: 0px;
+    --desktop-sectors-bg-offset-y: 0px;
+    --desktop-sectors-bg-x: calc((var(--desktop-sectors-width) - var(--desktop-sectors-bg-width)) / 2 + var(--desktop-sectors-bg-offset-x));
+    --desktop-sectors-bg-y: calc((var(--desktop-sectors-height) - var(--desktop-sectors-bg-height)) / 2 + var(--desktop-sectors-bg-offset-y));
+  }
+
+  section.wheel > div.wheel-case .btn-spin {
+    width: var(--desktop-btn-spin-size);
+    height: var(--desktop-btn-spin-size);
+    top: var(--desktop-btn-spin-top);
+    left: var(--desktop-btn-spin-left);
+  }
+
+  section.wheel > div.wheel-case .wheel-spin {
+    width: 100%;
+    height: 100%;
+  }
+
+  section.wheel > div.wheel-case .wheel-arrow {
+    width: var(--desktop-arrow-size);
+    height: var(--desktop-arrow-size);
+    top: var(--desktop-arrow-top);
+    left: var(--desktop-arrow-left);
+  }
+
+  section.wheel > div.wheel-case .wheel-border {
+    width: var(--desktop-border-width);
+    height: var(--desktop-border-height);
+    top: var(--desktop-border-top);
+    left: var(--desktop-border-left);
+    transform: scale(var(--desktop-border-scale));
+  }
+
+  section.wheel > div.wheel-case .sectors {
+    width: var(--desktop-sectors-width);
+    height: var(--desktop-sectors-height);
+    top: var(--desktop-sectors-top);
+    left: var(--desktop-sectors-left);
+    transform: scale(var(--desktop-sectors-scale));
+    --sectors-bg-width: var(--desktop-sectors-bg-width);
+    --sectors-bg-height: var(--desktop-sectors-bg-height);
+    --sectors-bg-x: var(--desktop-sectors-bg-x);
+    --sectors-bg-y: var(--desktop-sectors-bg-y);
+  }
+
+  /* Bottom decorative case image */
+  section.wheel > img.case-desktop {
+    top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y) + var(--desktop-case-img-offset-y));
+    left: calc(var(--wheel-anchor-x) + var(--wheel-shift-x) + var(--desktop-case-img-offset-x));
+  }
+
+  .banners {
+    /* Desktop banners: edit these directly */
+    left: 115px;
+    top: 336px;
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+
+  /* Desktop banners: animate only on hover, return smoothly on leave */
+  .banners .trick,
+  .banners .sweet-bananza,
+  .banners .fs,
+  .banners .dollar-top,
+  .banners .dollar-bottom,
+  .banners .bag {
+    animation: none !important;
+    top: var(--promo-y-from);
+    left: var(--promo-x-from);
+    transform: rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-from, 0deg)) scale(var(--promo-scale-from, 1));
+    transition:
+      top var(--promo-dur) var(--promo-ease),
+      left var(--promo-dur) var(--promo-ease),
+      transform var(--promo-dur) var(--promo-ease);
+  }
+
+  /* Keep desktop base pose same as mobile */
+  .banners .trick { --promo-base-tilt: -90deg; }
+  .banners .sweet-bananza { --promo-base-tilt: -8.62deg; }
+  .banners .fs { --promo-base-tilt: 0deg; }
+  .banners .dollar-top { --promo-base-tilt: 0deg; }
+  .banners .dollar-bottom { --promo-base-tilt: 0deg; }
+  .banners .bag { --promo-base-tilt: -13.28deg; }
+
+  .frame-31-fs-fd:hover .trick,
+  .frame-31-fs-fd:hover .sweet-bananza,
+  .frame-31-fs-fd:hover .fs,
+  .frame-31-fs-fd:hover .dollar-top,
+  .frame-31-fs-fd:hover .dollar-bottom,
+  .frame-31-fs-fd:hover .bag {
+    top: var(--promo-y-to);
+    left: var(--promo-x-to);
+    transform: rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-to, 0deg)) scale(var(--promo-scale-to, 1));
+  }
+  /* .wheel {
+    width: 1280px;
+    height: 1280px;
+    transform: rotate(0deg);
+    opacity: 1;
+  } */
+}
+
+/* Десктоп 2: width ≥ 1920px */
+/* @media screen and (min-width: 1920px) {
+  .page {
+    width: min(1920px, 100vw);
+    max-width: 1920px;
+    min-height: min(1080px, 100vh);
+    min-height: min(1080px, 100dvh);
+    поверх vh, если поддерживается
+    --layout-id: desktop-1920-up;
+    --design-w: 1920;
+    --design-h: 1080;
+    --layout-safe-inline: clamp(24px, 3vw, 64px);
+    --layout-safe-block: clamp(24px, 3vh, 48px);
+    --layout-scale: calc(min(1920, 100vw) / 393);
+  }
+} */
