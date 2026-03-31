@@ -96,6 +96,10 @@ a.loot-run-link {
   pointer-events: none;
 }
 
+.shadow-desktop {
+  display: none;
+}
+
 /* Desktop-only girl image */
 .girl-desktop {
   display: none;
@@ -1190,6 +1194,13 @@ section.wheel>img.case-desktop {
   pointer-events: none;
 }
 
+.spinning-bonus-one img,
+.spinning-bonus-two img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .spinning-bonus-one.is-visible,
 .spinning-bonus-two.is-visible {
   opacity: 1;
@@ -1833,7 +1844,7 @@ section.wheel>img.case-desktop {
 }
 
 .wheel-result-popup__box-content-text-two {
-  width: 210px;
+  width: 250px;
   height: 64px;
   transform: rotate(0deg);
   opacity: 1;
@@ -2260,11 +2271,11 @@ section.wheel>img.case-desktop {
   /* @media screen and (min-width: 1080px) and (max-width: 1919px) { */
   body {
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 0;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     box-sizing: border-box;
   }
 
@@ -2273,8 +2284,8 @@ section.wheel>img.case-desktop {
     max-width: 1440px;
     margin-inline: auto;
     transform: translateY(-70px);
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 0;
+    height: min(1024px, 100dvh);
     --layout-id: desktop-1080-1919;
     --design-w: 1440;
     --design-h: 1024;
@@ -2290,6 +2301,9 @@ section.wheel>img.case-desktop {
     --desktop-case-img-offset-y: 357px;
     --desktop-girl-offset-x: 115px;
     --desktop-girl-offset-y: -145px;
+    --desktop-counter-offset-x: 350px;
+    --desktop-counter-offset-y: 12px;
+    --desktop-footer-offset-y: -550px;
   }
 
   .brand {
@@ -2297,10 +2311,10 @@ section.wheel>img.case-desktop {
   }
 
   .footer {
-    width: 97%;
+    width: 85%;
     height: 28px;
     justify-content: space-between;
-    transform: rotate(0deg);
+    transform: translateY(var(--desktop-footer-offset-y));
     opacity: 1;
   }
 
@@ -2372,6 +2386,7 @@ section.wheel>img.case-desktop {
 
   .wheel-text {
     top: 885px;
+    width: 460px;
   }
 
   .girl {
@@ -2394,7 +2409,7 @@ section.wheel>img.case-desktop {
   }
 
   /* Main wheel wrapper (section.wheel > div.wheel-case) */
-  section.wheel > div.wheel-case {
+  section.wheel>div.wheel-case {
     top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y));
     left: calc(var(--wheel-anchor-x) + var(--wheel-shift-x));
     transform: translateX(-50%);
@@ -2425,26 +2440,26 @@ section.wheel>img.case-desktop {
     --desktop-sectors-bg-y: calc((var(--desktop-sectors-height) - var(--desktop-sectors-bg-height)) / 2 + var(--desktop-sectors-bg-offset-y));
   }
 
-  section.wheel > div.wheel-case .btn-spin {
+  section.wheel>div.wheel-case .btn-spin {
     width: var(--desktop-btn-spin-size);
     height: var(--desktop-btn-spin-size);
     top: var(--desktop-btn-spin-top);
     left: var(--desktop-btn-spin-left);
   }
 
-  section.wheel > div.wheel-case .wheel-spin {
+  section.wheel>div.wheel-case .wheel-spin {
     width: 100%;
     height: 100%;
   }
 
-  section.wheel > div.wheel-case .wheel-arrow {
+  section.wheel>div.wheel-case .wheel-arrow {
     width: var(--desktop-arrow-size);
     height: var(--desktop-arrow-size);
     top: var(--desktop-arrow-top);
     left: var(--desktop-arrow-left);
   }
 
-  section.wheel > div.wheel-case .wheel-border {
+  section.wheel>div.wheel-case .wheel-border {
     width: var(--desktop-border-width);
     height: var(--desktop-border-height);
     top: var(--desktop-border-top);
@@ -2452,7 +2467,7 @@ section.wheel>img.case-desktop {
     transform: scale(var(--desktop-border-scale));
   }
 
-  section.wheel > div.wheel-case .sectors {
+  section.wheel>div.wheel-case .sectors {
     width: var(--desktop-sectors-width);
     height: var(--desktop-sectors-height);
     top: var(--desktop-sectors-top);
@@ -2465,17 +2480,46 @@ section.wheel>img.case-desktop {
   }
 
   /* Bottom decorative case image */
-  section.wheel > img.case-desktop {
+  section.wheel>img.case-desktop {
     top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y) + var(--desktop-case-img-offset-y));
     left: calc(var(--wheel-anchor-x) + var(--wheel-shift-x) + var(--desktop-case-img-offset-x));
   }
 
   .banners {
     /* Desktop banners: edit these directly */
-    left: 115px;
+    left: 140px;
     top: 336px;
     transform: scale(0.9);
     transform-origin: top left;
+  }
+
+  .counter {
+    /* Desktop counter is anchored to wheel, so it doesn't drift on resize */
+    left: calc(var(--wheel-anchor-x) + var(--wheel-shift-x) + var(--desktop-counter-offset-x));
+    top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y) + var(--desktop-counter-offset-y));
+    transform: scale(1);
+    transform-origin: top left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 207px;
+    height: 216px;
+  }
+
+  .counter .spins,
+  .counter .bonuses {
+    width: 100%;
+    flex: 1 1 0;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .spins-label, .bonuses-label {
+    font-size: 18px;
+  }
+
+  .bonuses-value, .spins-value {
+    font-size: 40px;
   }
 
   /* Desktop banners: animate only on hover, return smoothly on leave */
@@ -2496,12 +2540,29 @@ section.wheel>img.case-desktop {
   }
 
   /* Keep desktop base pose same as mobile */
-  .banners .trick { --promo-base-tilt: -90deg; }
-  .banners .sweet-bananza { --promo-base-tilt: -8.62deg; }
-  .banners .fs { --promo-base-tilt: 0deg; }
-  .banners .dollar-top { --promo-base-tilt: 0deg; }
-  .banners .dollar-bottom { --promo-base-tilt: 0deg; }
-  .banners .bag { --promo-base-tilt: -13.28deg; }
+  .banners .trick {
+    --promo-base-tilt: -90deg;
+  }
+
+  .banners .sweet-bananza {
+    --promo-base-tilt: -8.62deg;
+  }
+
+  .banners .fs {
+    --promo-base-tilt: 0deg;
+  }
+
+  .banners .dollar-top {
+    --promo-base-tilt: 0deg;
+  }
+
+  .banners .dollar-bottom {
+    --promo-base-tilt: 0deg;
+  }
+
+  .banners .bag {
+    --promo-base-tilt: -13.28deg;
+  }
 
   .frame-31-fs-fd:hover .trick,
   .frame-31-fs-fd:hover .sweet-bananza,
@@ -2513,12 +2574,114 @@ section.wheel>img.case-desktop {
     left: var(--promo-x-to);
     transform: rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-to, 0deg)) scale(var(--promo-scale-to, 1));
   }
+
+  .spinning-bonus-container {
+    top: 790px;
+    width: 280px;
+  }
+
   /* .wheel {
     width: 1280px;
     height: 1280px;
     transform: rotate(0deg);
     opacity: 1;
   } */
+
+  .footer-light-image-desktop {
+    display: none;
+  }
+
+  .light-image-desktop {
+    display: none;
+  }
+
+  .shadow-desktop {
+    display: block;
+  }
+
+  .shadow-desktop {
+    position: absolute;
+    pointer-events: none;
+    top: var(--shadow-top, 0px);
+    left: var(--shadow-left, 0px);
+    width: var(--shadow-width, 300px);
+    height: auto;
+    transform: translate(var(--shadow-translate-x, 0), var(--shadow-translate-y, 0));
+  }
+  
+  /* Shadow #1: wheelshadow.png */
+  .shadow-1 {
+    --shadow-top: 780px;
+    --shadow-left: 50%;
+    --shadow-width: 760px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+    z-index: 1;
+  }
+  
+  /* Shadow #2: wheel_shadow-1.png */
+  .shadow-2 {
+    --shadow-top: 830px;
+    --shadow-left: 50%;
+    --shadow-width: 320px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+    z-index: 1;
+  }
+  
+  /* Shadow #3: Ellipse23.png */
+  .shadow-3 {
+  --shadow-top: 760px;
+    --shadow-left: 50%;
+  --shadow-width: 1440px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
+  
+  /* Shadow #4: Ellipse16.png */
+  .shadow-4 {
+  --shadow-top: 650px;
+  --shadow-left: 50%;
+  --shadow-width: 1800px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
+  
+  /* Shadow #5: Ellipse15.png */
+  .shadow-5 {
+  --shadow-top: 650px;
+  --shadow-left: 50%;
+  --shadow-width: 1800px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
+  
+  /* Shadow #6: Ellipse12.png */
+  .shadow-6 {
+  --shadow-top: 965px;
+  --shadow-left: 50%;
+  --shadow-width: 1180px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
+  
+  /* Shadow #7: Ellipse11.png */
+  .shadow-7 {
+  --shadow-top: 880px;
+  --shadow-left: 50%;
+  --shadow-width: 1440px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
+  
+  /* Shadow #8: Ellipse10.png */
+  .shadow-8 {
+  --shadow-top: 700px;
+    --shadow-left: 50%;
+  --shadow-width: 1034px;
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
 }
 
 /* Десктоп 2: width ≥ 1920px */
