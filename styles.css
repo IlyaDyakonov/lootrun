@@ -2277,6 +2277,11 @@ section.wheel>img.case-desktop {
 @media screen and (min-width: 1080px) {
 
   /* @media screen and (min-width: 1080px) and (max-width: 1919px) { */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   body {
     width: 100%;
     min-height: 0;
@@ -2288,12 +2293,14 @@ section.wheel>img.case-desktop {
   }
 
   .page {
-    width: min(100vw, 1440px);
-    max-width: 1440px;
+    width: min(100vw, 2440px);
+    max-width: 2440px;
     margin-inline: auto;
-    transform: translateY(-70px);
-    min-height: 0;
-    height: min(1024px, 100dvh);
+    margin-top: -70px;
+    min-height: 1024px;
+    height: 1024px;
+    overflow-x: hidden;
+    overflow-y: hidden;
     --layout-id: desktop-1080-1919;
     --design-w: 1440;
     --design-h: 1024;
@@ -2311,7 +2318,6 @@ section.wheel>img.case-desktop {
     --desktop-girl-offset-y: -145px;
     --desktop-counter-offset-x: 350px;
     --desktop-counter-offset-y: 12px;
-    --desktop-footer-offset-y: -550px;
   }
 
   .brand {
@@ -2322,7 +2328,10 @@ section.wheel>img.case-desktop {
     width: 92%;
     height: 28px;
     justify-content: space-between;
-    transform: translateY(var(--desktop-footer-offset-y));
+    top: auto;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
     opacity: 1;
   }
 
