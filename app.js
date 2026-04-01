@@ -98,6 +98,40 @@
 
   const LOOT_RUN_URL = 'https://loot.run/';
 
+  const INACTIVITY_REDIRECT_MS = 40_000;
+
+  const initInactivityRedirect = () => {
+    let inactivityTimerId = null;
+
+    const clearInactivityTimer = () => {
+      if (inactivityTimerId === null) return;
+      window.clearTimeout(inactivityTimerId);
+      inactivityTimerId = null;
+    };
+
+    const scheduleInactivityRedirect = () => {
+      clearInactivityTimer();
+      inactivityTimerId = window.setTimeout(() => {
+        window.location.href = LOOT_RUN_URL;
+      }, INACTIVITY_REDIRECT_MS);
+    };
+
+    const activityEvents = ['pointerdown', 'pointermove', 'keydown', 'scroll', 'touchstart', 'click'];
+    activityEvents.forEach((eventName) => {
+      window.addEventListener(eventName, scheduleInactivityRedirect, { passive: true });
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        clearInactivityTimer();
+        return;
+      }
+      scheduleInactivityRedirect();
+    });
+
+    scheduleInactivityRedirect();
+  };
+
   const appendLootRunLinkified = (el, text) => {
     el.textContent = '';
     const re = /loot\.run/gi;
@@ -492,11 +526,13 @@
       renderWheelSectors();
       void applyI18n();
       animateStatsCounters();
+      initInactivityRedirect();
     });
   } else {
     renderWheelSectors();
     void applyI18n();
     animateStatsCounters();
+    initInactivityRedirect();
   }
 
   const spinButton = document.querySelector('.wheel-spin');
