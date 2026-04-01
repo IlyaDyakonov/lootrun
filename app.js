@@ -260,6 +260,7 @@
     const wheelResultPopup = document.getElementById('wheelResultPopup');
     const sectors = document.getElementById('sectors');
     const wheelArrow = document.querySelector('.wheel-arrow');
+    const isDesktop = window.matchMedia?.('(min-width: 1080px)').matches;
 
     if (spinningDescription) {
       spinningDescription.hidden = false;
@@ -335,6 +336,9 @@
 
       const showEndSectors = () => {
         sectors.classList.add('sectors-ended');
+        if (isDesktop && spinningDescription) {
+          spinningDescription.classList.add('is-congrats-desktop');
+        }
         if (spinningBonusContainer) {
           spinningBonusContainer.classList.add('is-fade-out');
           const bonusFadeSec = parseFloat(getComputedStyle(spinningBonusContainer).transitionDuration);
@@ -414,6 +418,7 @@
     if (spinningDescription) {
       spinningDescription.hidden = true;
       spinningDescription.classList.remove('is-visible');
+      spinningDescription.classList.remove('is-congrats-desktop');
     }
 
     const wheelText = document.querySelector('.wheel-text');

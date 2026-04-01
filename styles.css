@@ -2396,6 +2396,58 @@ section.wheel>img.case-desktop {
     white-space: nowrap;
   }
 
+  .hero-header-description-fine-spinning {
+    white-space: normal;
+    text-align: center;
+    width: max-content;
+    margin-inline: auto;
+    line-height: 1.15;
+  }
+
+  .hero-header-description-fine-spinning > span {
+    display: inline;
+  }
+
+  /* Desktop: line 1 => spans 1-2, line 2 => spans 3-4 */
+  .hero-header-description-fine-spinning > span:nth-child(2)::after {
+    content: "\A";
+    white-space: pre;
+    display: block;
+    margin-bottom: 0px;
+  }
+
+  .hero-header-description-fine-spinning.is-congrats-desktop {
+    width: var(--hero-desc-width);
+    height: 54px;
+    white-space: normal;
+    text-align: center;
+    position: absolute;
+  }
+
+  .hero-header-description-fine-spinning.is-congrats-desktop>span {
+    display: none;
+  }
+
+  .hero-header-description-fine-spinning.is-congrats-desktop::before {
+    content: "Congratulations!";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Google Sans", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    font-style: Regular;
+    leading-trim: NONE;
+    letter-spacing: 3%;
+    text-align: center;
+    text-transform: none;
+    color: #FFFFFF;
+    top: -42px;
+  }
+
   .wheel-text-two {
     display: inline-block;
     white-space: nowrap;
@@ -2759,11 +2811,13 @@ section.wheel>img.case-desktop {
     justify-content: center;
   }
 
-  .spins-label, .bonuses-label {
+  .spins-label,
+  .bonuses-label {
     font-size: 18px;
   }
 
-  .bonuses-value, .spins-value {
+  .bonuses-value,
+  .spins-value {
     font-size: 40px;
   }
 
@@ -2928,7 +2982,7 @@ section.wheel>img.case-desktop {
     --rect-translate-x: -50%;
     --rect-translate-y: 0;
   }
-  
+
   /* Shadow #1: wheelshadow.png */
   .shadow-1 {
     --shadow-top: 780px;
@@ -2938,7 +2992,7 @@ section.wheel>img.case-desktop {
     --shadow-translate-y: 0;
     z-index: 1;
   }
-  
+
   /* Shadow #2: wheel_shadow-1.png */
   .shadow-2 {
     --shadow-top: 830px;
@@ -2948,68 +3002,68 @@ section.wheel>img.case-desktop {
     --shadow-translate-y: 0;
     z-index: 1;
   }
-  
+
   /* Shadow #3: Ellipse23.png */
   .shadow-3 {
-  --shadow-top: 700px;
+    --shadow-top: 700px;
     --shadow-left: 50%;
-  --shadow-width: 1840px;
+    --shadow-width: 1840px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
-  
+
   /* Shadow #4: Ellipse16.png */
   .shadow-4 {
-  --shadow-top: 650px;
-  --shadow-left: 50%;
-  --shadow-width: 1800px;
+    --shadow-top: 650px;
+    --shadow-left: 50%;
+    --shadow-width: 1800px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
-  
+
   /* Shadow #5: Ellipse15.png */
   .shadow-5 {
-  --shadow-top: 650px;
-  --shadow-left: 50%;
-  --shadow-width: 1800px;
+    --shadow-top: 650px;
+    --shadow-left: 50%;
+    --shadow-width: 1800px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
-  
+
   /* Shadow #6: Ellipse12.png */
   .shadow-6 {
-  --shadow-top: 975px;
-  --shadow-left: 50%;
-  --shadow-width: 1180px;
+    --shadow-top: 975px;
+    --shadow-left: 50%;
+    --shadow-width: 1180px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
-  
+
   /* Shadow #7: Ellipse11.png */
   .shadow-7 {
-  --shadow-top: 895px;
-  --shadow-left: 50%;
-  --shadow-width: 1440px;
+    --shadow-top: 895px;
+    --shadow-left: 50%;
+    --shadow-width: 1440px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
-  
+
   /* Shadow #8: Ellipse10.png */
   .shadow-8 {
-  --shadow-top: 700px;
+    --shadow-top: 700px;
     --shadow-left: 50%;
-  --shadow-width: 1034px;
+    --shadow-width: 1034px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
 
   .shadow-9 {
     --shadow-top: 820px;
-      --shadow-left: 70%;
+    --shadow-left: 70%;
     --shadow-width: 300px;
-      --shadow-translate-x: -50%;
-      --shadow-translate-y: 0;
-    }
+    --shadow-translate-x: -50%;
+    --shadow-translate-y: 0;
+  }
 }
 
 /* Десктоп 2: width ≥ 1920px */
