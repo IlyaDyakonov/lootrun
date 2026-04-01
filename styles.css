@@ -433,9 +433,9 @@ a.loot-run-link {
   transform-origin: center center;
 
   --promo-x-from: calc(100% - 265px);
-  --promo-y-from: -20px;
+  --promo-y-from: -15px;
   --promo-x-to: calc(100% - 295px);
-  --promo-y-to: -20px;
+  --promo-y-to: -15px;
   --promo-scale-from: 1;
   --promo-scale-to: 1.2;
   --promo-rotate-from: 0deg;
@@ -2479,7 +2479,7 @@ section.wheel>img.case-desktop {
     gap: 12px;
     justify-content: flex-start;
     border-radius: 24px;
-    margin-top: 130px;
+    margin-top: 100px;
   }
 
   .sweet-bananza-popup {
@@ -2521,9 +2521,9 @@ section.wheel>img.case-desktop {
   }
 
   .wheel-result-popup__box-steps-three-steps-item {
-    width: 100%;
+    width: 90%;
     height: auto;
-    min-height: 245px;
+    min-height: 230px;
     gap: 12px;
     padding: 10px 10px 0;
   }
@@ -2581,6 +2581,10 @@ section.wheel>img.case-desktop {
     margin-top: 8px;
     font-size: 12px;
     line-height: 12px;
+  }
+
+  .wheel-result-popup__box-steps .wheel-result-popup__box-button-message-text-text {
+    display: block;
   }
 
   .wheel-result-popup__box-steps-ellipse24 {
