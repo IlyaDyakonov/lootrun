@@ -2325,7 +2325,7 @@ section.wheel>img.case-desktop {
   }
 
   .footer {
-    width: 92%;
+    width: 1150px;
     height: 28px;
     justify-content: space-between;
     top: auto;
@@ -2468,7 +2468,7 @@ section.wheel>img.case-desktop {
   }
 
   .wheel-result-popup__box-bonus {
-    margin-top: 150px;
+    margin-top: 80px;
   }
 
   .wheel-result-popup__box-steps {
