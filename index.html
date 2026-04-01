@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bonus Wheel</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" as="image" href="picture/Rectangle32.png" fetchpriority="high" />
 </head>
 
 <body>
@@ -16,7 +17,7 @@
 
         <div class="page-bg-layer" aria-hidden="true">
             <!-- Добавляй сюда фоновые картинки. Они не участвуют в потоке и не двигают верстку. -->
-            <img src="picture/Rectangle32.png" alt="" class="page-bg-image " style="top: 0; left: 0; width: 1440px; height: auto;" />
+            <img src="picture/Rectangle32.png" alt="" class="page-bg-image " fetchpriority="high" loading="eager" style="top: 0; left: 0; width: 1440px; height: auto;" />
             <img src="picture/header.png" alt="" class="page-bg-image page-bg-image-desktop-rect" style="top: 0; left: 0; width: 393px; height: auto;" />
             <img src="picture/Ellipse24-center.png" alt="" class="page-bg-image center-image-desktop" style="top: 70px; left: 0; width: 393px; height: auto;" />
             <img src="picture/lights.png" alt="" class="page-bg-image light-image-desktop" style="top: 580px; left: 0; width: 393px; height: auto;" />
