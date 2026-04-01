@@ -1378,7 +1378,7 @@ section.wheel>img.case-desktop {
   width: 699px;
   height: 699px;
   position: absolute;
-  top: -50px;
+  top: -51px;
   left: 12px;
   z-index: 3;
   transform: scale(0.52);
@@ -1391,7 +1391,7 @@ section.wheel>img.case-desktop {
       #6C48E8 45deg 90deg);
   */
   --sectors-bg-x: 59px;
-  --sectors-bg-y: 59px;
+  --sectors-bg-y: 58px;
   --sectors-bg-width: 585px;
   --sectors-bg-height: 585px;
   --sectors-spin-end: calc(var(--wheel-start-rotation) + 360deg);
@@ -2644,7 +2644,7 @@ section.wheel>img.case-desktop {
     --desktop-sectors-width: 700px;
     --desktop-sectors-height: 700px;
     --desktop-sectors-scale: 0.62;
-    --desktop-sectors-top: -50px;
+    --desktop-sectors-top: -47px;
     --desktop-sectors-left: -20px;
     --desktop-sectors-bg-width: 620px;
     --desktop-sectors-bg-height: 620px;
