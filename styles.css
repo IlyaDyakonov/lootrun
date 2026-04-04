@@ -2321,7 +2321,7 @@ section.wheel>img.case-desktop {
   }
 
   .brand {
-    left: calc(50% - 500px);
+    left: calc(50% - 530px);
     top: 115px;
     transform: translateX(-50%);
   }
