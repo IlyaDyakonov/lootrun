@@ -345,7 +345,7 @@
       const spinCs = getComputedStyle(spinTimingParent);
       const durParsed = parseFloat(spinCs.getPropertyValue('--wheel-spin-duration'));
       const delayParsed = parseFloat(spinCs.getPropertyValue('--wheel-spin-delay'));
-      const durSec = Number.isFinite(durParsed) ? durParsed : 3.8;
+      const durSec = Number.isFinite(durParsed) ? durParsed : 7;
       const delaySec = Number.isFinite(delayParsed) ? delayParsed : 0;
       const fallbackMs = Math.ceil((durSec + delaySec) * 1000) + 80;
 
