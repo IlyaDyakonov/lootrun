@@ -232,7 +232,8 @@ a.loot-run-link {
 /* левая панель */
 .banners {
   width: 353px;
-  height: 480px;
+  min-height: 480px;
+  height: auto;
   transform: rotate(0deg);
   opacity: 1;
   top: 1006px;
@@ -315,7 +316,8 @@ a.loot-run-link {
 
 .frame-31-fs-fd {
   width: 321px;
-  height: 168px;
+  min-height: 168px;
+  height: auto;
   border-radius: 16px;
   gap: 10px;
   transform: rotate(0deg);
@@ -328,28 +330,38 @@ a.loot-run-link {
 }
 
 .frame-32 {
-  width: 286px;
-  height: 62px;
+  width: 335px;
+  min-height: 62px;
+  height: auto;
   gap: 8px;
   transform: rotate(0deg);
   opacity: 1;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .frame-34 {
-  width: 326px;
-  height: 34px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 34px;
+  height: auto;
   gap: 12px;
   transform: rotate(0deg);
   opacity: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
 .frame-34-text {
-  width: 282px;
-  height: 34px;
+  flex: 0 1 auto;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  min-height: 34px;
   transform: rotate(0deg);
   opacity: 1;
   font-family: "Google Sans", sans-serif;
@@ -357,15 +369,18 @@ a.loot-run-link {
   font-style: Bold;
   font-size: 32px;
   leading-trim: NONE;
-  line-height: 34px;
+  line-height: 1.06;
   letter-spacing: 0%;
   text-transform: uppercase;
   color: #FFFFFF;
+  overflow-wrap: anywhere;
 }
 
 .frame-34-text-value {
-  width: 286px;
-  height: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 20px;
+  height: auto;
   transform: rotate(0deg);
   opacity: 1;
   font-family: "Google Sans", sans-serif;
@@ -376,11 +391,13 @@ a.loot-run-link {
   line-height: 20px;
   letter-spacing: 1%;
   color: #888D93;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 /* Promo images: путь — --promo-x-to / --promo-y-to; масштаб — --promo-scale-to / --promo-scale-from;
-   вращение вокруг центра — --promo-rotate-to / --promo-rotate-from (например 0deg … 12deg или 0deg … 360deg).
-   Длительность/повтор: --promo-dur, --promo-iter, --promo-dir.
+  вращение вокруг центра — --promo-rotate-to / --promo-rotate-from (например 0deg … 12deg или 0deg … 360deg).
+  Длительность/повтор: --promo-dur, --promo-iter, --promo-dir.
    Пример: style="--promo-y-to: 60px; --promo-scale-to: 1.12; --promo-rotate-to: 15deg;" */
 
 .trick {
