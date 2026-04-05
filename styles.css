@@ -2008,7 +2008,7 @@ section.wheel>img.case-desktop {
 
 .wheel-result-popup__box-button-message-text {
   box-sizing: border-box;
-  width: 70%;
+  width: 80%;
   /* max-width: 211px; */
   align-self: center;
   text-align: center;
@@ -2219,7 +2219,7 @@ section.wheel>img.case-desktop {
 
 .wheel-result-popup__box-steps-three-steps-item-text-text {
   margin-bottom: 5px;
-  width: 280px;
+  width: 290px;
   height: 39px;
   transform: rotate(0deg);
   opacity: 1;
