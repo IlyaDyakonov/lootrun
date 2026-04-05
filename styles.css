@@ -1217,7 +1217,7 @@ section.wheel>img.case-desktop {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: -10;
   overflow: visible;
 
   --wheel-firework-size1: 180px;
@@ -2250,7 +2250,7 @@ section.wheel>img.case-desktop {
    ============================================================================= */
 
 /* Общее для обоих десктопов */
-/* @media screen and (min-width: 1080px) {
+/* @media screen and (min-width: 1080px) and (max-width: 1919px) {
   body {
     align-items: center;
     justify-content: center;
