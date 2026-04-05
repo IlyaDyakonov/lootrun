@@ -2310,8 +2310,8 @@ section.wheel>img.case-desktop {
   }
 
   .page {
-    width: min(100vw, 2440px);
-    max-width: 2440px;
+    width: min(100vw, 3440px);
+    max-width: 3440px;
     margin-inline: auto;
     margin-top: -70px;
     min-height: 1024px;
@@ -3046,7 +3046,7 @@ section.wheel>img.case-desktop {
 
   /* Shadow #5: Ellipse15.png */
   .shadow-5 {
-    --shadow-top: 650px;
+    --shadow-top: 640px;
     --shadow-left: 50%;
     --shadow-width: 1800px;
     --shadow-translate-x: -50%;
@@ -3073,7 +3073,7 @@ section.wheel>img.case-desktop {
 
   /* Shadow #8: Ellipse10.png */
   .shadow-8 {
-    --shadow-top: 700px;
+    --shadow-top: 640px;
     --shadow-left: 50%;
     --shadow-width: 1034px;
     --shadow-translate-x: -50%;
@@ -3082,10 +3082,32 @@ section.wheel>img.case-desktop {
 
   .shadow-9 {
     --shadow-top: 820px;
-    --shadow-left: 70%;
+    --shadow-left: calc(50% + 290px);
     --shadow-width: 300px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
+  }
+
+  /*
+   * Растягиваем тени на всю ширину слоя.
+   * Локальные тени у колеса (1–2) и у фигуры (9) не трогаем.
+   */
+  .shadow-3,
+  .shadow-4,
+  .shadow-5,
+  .shadow-6,
+  .shadow-7,
+  .shadow-8 {
+    width: max(100%, var(--shadow-width));
+  }
+
+  /* Верхний фон макета: был 1440px — на широкой .page оставались чёрные столбы */
+  .page-bg-layer>img.page-bg-image:first-of-type {
+    width: 100% !important;
+    max-width: none;
+    left: 50% !important;
+    transform: translateX(-50%);
+    height: auto;
   }
 }
 
