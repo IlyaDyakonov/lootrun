@@ -2643,6 +2643,34 @@ section.wheel>img.case-desktop {
     height: auto;
   }
 
+  .girl-desktop--static {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.01s ease;
+  }
+
+  .girl-desktop--gif {
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.01s ease;
+  }
+
+  .girl--gif-active .girl-desktop--static {
+    opacity: 0;
+  }
+
+  .girl--gif-active .girl-desktop--gif {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .girl-desktop--static,
+    .girl-desktop--gif {
+      transition: none;
+    }
+  }
+
   /* Main wheel wrapper (section.wheel > div.wheel-case) */
   section.wheel>div.wheel-case {
     top: calc(var(--wheel-anchor-y) + var(--wheel-shift-y));

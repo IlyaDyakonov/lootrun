@@ -278,6 +278,15 @@
     }
   };
 
+  const setGirlDesktopPostSpin = (showGif) => {
+    const girlSection = document.querySelector('.girl');
+    const girlStatic = document.querySelector('.girl-desktop--static');
+    const girlGif = document.querySelector('.girl-desktop--gif');
+    if (girlSection) girlSection.classList.toggle('girl--gif-active', Boolean(showGif));
+    if (girlStatic) girlStatic.setAttribute('aria-hidden', showGif ? 'true' : 'false');
+    if (girlGif) girlGif.setAttribute('aria-hidden', showGif ? 'false' : 'true');
+  };
+
   const activateSpinStateUi = () => {
     if (spinStateActivated) return;
     spinStateActivated = true;
@@ -385,6 +394,9 @@
           wheelFireworks.hidden = false;
           wheelFireworks.setAttribute('aria-hidden', 'false');
         }
+        if (isDesktop) {
+          setGirlDesktopPostSpin(true);
+        }
 
         if (wheelResultPopup) {
           window.setTimeout(() => {
@@ -477,6 +489,8 @@
       wheelFireworks.hidden = true;
       wheelFireworks.setAttribute('aria-hidden', 'true');
     }
+
+    setGirlDesktopPostSpin(false);
 
     if (spinButton) spinButton.focus();
   };
