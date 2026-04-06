@@ -1237,15 +1237,15 @@ section.wheel>img.case-desktop {
   z-index: -10;
   overflow: visible;
 
-  --wheel-firework-size1: 180px;
-  --wheel-firework-size2: 80px;
-  --wheel-firework-size3: 130px;
+  --wheel-firework-size1: 280px;
+  --wheel-firework-size2: 130px;
+  --wheel-firework-size3: 210px;
   --wheel-firework-1-top: 320px;
-  --wheel-firework-1-left: 10px;
+  --wheel-firework-1-left: -50px;
   --wheel-firework-2-top: 310px;
-  --wheel-firework-2-left: 175px;
+  --wheel-firework-2-left: 150px;
   --wheel-firework-3-top: 330px;
-  --wheel-firework-3-left: 230px;
+  --wheel-firework-3-left: 200px;
 }
 
 .wheel-fireworks[hidden] {
@@ -1938,7 +1938,8 @@ section.wheel>img.case-desktop {
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
-  width: 100%;
+  width: 90%;
+  align-self: center;
   max-width: 321px;
   min-height: 120px;
   height: auto;
@@ -2701,22 +2702,17 @@ section.wheel>img.case-desktop {
     transform: scale(var(--desktop-border-scale));
   }
 
-  /* Desktop offset for wheel fireworks (keeps mobile positions unchanged) */
-  .wheel-fireworks {
-    position: absolute;
-    inset: 0;
-    --desktop-fireworks-anchor-x: 52%;
-    --desktop-fireworks-anchor-y: 300px;
-    --wheel-firework-1-width: 220px;
-    --wheel-firework-2-width: 100px;
-    --wheel-firework-3-width: 150px;
-    --wheel-firework-1-left: calc(var(--desktop-fireworks-anchor-x) - 300px);
-    --wheel-firework-1-top: calc(var(--desktop-fireworks-anchor-y) + 0px);
-    --wheel-firework-2-left: calc(var(--desktop-fireworks-anchor-x) - 55px);
-    --wheel-firework-2-top: calc(var(--desktop-fireworks-anchor-y) - 10px);
-    --wheel-firework-3-left: calc(var(--desktop-fireworks-anchor-x) + 70px);
-    --wheel-firework-3-top: calc(var(--desktop-fireworks-anchor-y) + 20px);
-    z-index: -10;
+  /* Desktop: left от центра .wheel — calc(50% ± …), вертикаль в px */
+  section.wheel .wheel-fireworks {
+    --wheel-firework-1-width: 380px;
+    --wheel-firework-2-width: 150px;
+    --wheel-firework-3-width: 330px;
+    --wheel-firework-1-left: calc(50% - 340px);
+    --wheel-firework-1-top: 290px;
+    --wheel-firework-2-left: calc(50% - 50px);
+    --wheel-firework-2-top: 300px;
+    --wheel-firework-3-left: calc(50% - 20px);
+    --wheel-firework-3-top: 260px;
   }
 
   /* Desktop positions for floating wheel decor (animation behavior unchanged) */
