@@ -417,27 +417,23 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 40deg;
   --promo-dur: 1.2s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(-90deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(-90deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: promo-move-trick var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
 @keyframes promo-move-trick {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(-90deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(-90deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(-90deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(-90deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -458,27 +454,23 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: -7deg;
   --promo-dur: 1.2s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(-8.62deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(-8.62deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: promo-move-sweet-bananza var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
 @keyframes promo-move-sweet-bananza {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(-8.62deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(-8.62deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(-8.62deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(-8.62deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -499,13 +491,13 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 0deg;
   --promo-dur: 1.2s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: promo-move-fs var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
@@ -549,15 +541,11 @@ a.loot-run-link {
 
 @keyframes promo-move-fs {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -581,27 +569,23 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 30deg;
   --promo-dur: 1.2s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: promo-move-dollar-top var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
 @keyframes promo-move-dollar-top {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -622,27 +606,23 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: -20deg;
   --promo-dur: 1.2s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: promo-move-dollar-bottom var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
 @keyframes promo-move-dollar-bottom {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(0deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(0deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -663,27 +643,23 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 0deg;
   --promo-dur: 1.2s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(-13.28deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(-13.28deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: promo-move-bag var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
 @keyframes promo-move-bag {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(-13.28deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(-13.28deg) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(-13.28deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(-13.28deg) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -858,21 +834,17 @@ a.loot-run-link {
   transform-origin: center center;
   top: var(--promo-y-from);
   left: var(--promo-x-from);
-  transform: rotate(var(--decor-tilt)) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+  transform: translate3d(0, 0, 0) rotate(var(--decor-tilt)) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   animation: wheel-decor-float var(--promo-dur) var(--promo-ease) var(--promo-iter) var(--promo-dir);
 }
 
 @keyframes wheel-decor-float {
   from {
-    top: var(--promo-y-from);
-    left: var(--promo-x-from);
-    transform: rotate(var(--decor-tilt)) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
+    transform: translate3d(0, 0, 0) rotate(var(--decor-tilt)) rotate(var(--promo-rotate-from)) scale(var(--promo-scale-from));
   }
 
   to {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(var(--decor-tilt)) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(var(--decor-tilt)) rotate(var(--promo-rotate-to)) scale(var(--promo-scale-to));
   }
 }
 
@@ -888,7 +860,7 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 80deg;
   --promo-dur: 3s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 }
@@ -905,7 +877,7 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: -90deg;
   --promo-dur: 3s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 }
@@ -922,7 +894,7 @@ a.loot-run-link {
   --promo-rotate-from: -35deg;
   --promo-rotate-to: 0deg;
   --promo-dur: 3s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 }
@@ -939,7 +911,7 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 40deg;
   --promo-dur: 3s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 }
@@ -956,7 +928,7 @@ a.loot-run-link {
   --promo-rotate-from: 0deg;
   --promo-rotate-to: 45deg;
   --promo-dur: 3s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 }
@@ -973,7 +945,7 @@ a.loot-run-link {
   --promo-rotate-from: 29deg;
   --promo-rotate-to: 45deg;
   --promo-dur: 3s;
-  --promo-ease: ease-in-out;
+  --promo-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   --promo-iter: infinite;
   --promo-dir: alternate;
 }
@@ -2878,11 +2850,8 @@ section.wheel>img.case-desktop {
     animation: none !important;
     top: var(--promo-y-from);
     left: var(--promo-x-from);
-    transform: rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-from, 0deg)) scale(var(--promo-scale-from, 1));
-    transition:
-      top var(--promo-dur) var(--promo-ease),
-      left var(--promo-dur) var(--promo-ease),
-      transform var(--promo-dur) var(--promo-ease);
+    transform: translate3d(0, 0, 0) rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-from, 0deg)) scale(var(--promo-scale-from, 1));
+    transition: transform var(--promo-dur) var(--promo-ease);
   }
 
   /* Keep desktop base pose same as mobile */
@@ -2916,9 +2885,7 @@ section.wheel>img.case-desktop {
   .frame-31-fs-fd:hover .dollar-top,
   .frame-31-fs-fd:hover .dollar-bottom,
   .frame-31-fs-fd:hover .bag {
-    top: var(--promo-y-to);
-    left: var(--promo-x-to);
-    transform: rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-to, 0deg)) scale(var(--promo-scale-to, 1));
+    transform: translate3d(calc(var(--promo-x-to) - var(--promo-x-from)), calc(var(--promo-y-to) - var(--promo-y-from)), 0) rotate(var(--promo-base-tilt, 0deg)) rotate(var(--promo-rotate-to, 0deg)) scale(var(--promo-scale-to, 1));
   }
 
   .spinning-bonus-container {
