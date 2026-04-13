@@ -73,7 +73,7 @@ a.loot-run-link {
   position: relative;
   width: 393px;
   min-height: 1600px;
-  overflow: visible;
+  overflow-x: hidden;
   /* background:
     radial-gradient(60% 24% at 50% 9%, rgba(122, 86, 246, 0.18) 0%, rgba(122, 86, 246, 0) 100%),
     linear-gradient(180deg, #15161B 0%, #0D0E10 28%, #0D0E10 100%); */
@@ -103,6 +103,12 @@ a.loot-run-link {
 }
 
 .shadow-desktop {
+  display: none;
+}
+
+/* Тени у футера (Ellipse23 / Ellipse11) — только десктоп, см. блок ≥1080px */
+.footer-shadow,
+.footer-shadows {
   display: none;
 }
 
@@ -2232,11 +2238,11 @@ section.wheel>img.case-desktop {
 
 
 /* =============================================================================
-  Три полосы по ширине viewport (мобильная база выше без @media — до 1079px):
-  • 0–1079px     — только дефолтные стили (мобилка 393px)
-  • 1080–1919px  — первый десктоп
-  • 1920px+      — второй десктоп (упор Full HD по ширине)
-  Высота/портрет не делят полосы: 1080×1920 попадает в первый десктоп по ширине.
+  Полосы по ширине viewport (мобильная база выше без @media — до 1079px):
+  • 0–1079px   — мобилка 393px
+  • ≥1080px    — десктопная разметка (колесо по центру, баннеры, счётчики и т.д.)
+  • ≥1920px    — доп. «резина» и переменные на .page (блок «Десктоп 2»)
+  Высота/портрет не делят полосы: узкий экран с шириной ≥1080 всё равно десктоп.
    ============================================================================= */
 
 /* Общее для обоих десктопов */
@@ -2263,10 +2269,8 @@ section.wheel>img.case-desktop {
   }
 } */
 
-/* Десктоп 1: 1080px ≤ width ≤ 1919px (макет дизайнера 1440×1024 — max ширина канвы) */
+/* Десктоп: от 1080px (макет 1440×1024). На ≥1920px дополнительно см. блок «Десктоп 2». */
 @media screen and (min-width: 1080px) {
-
-  /* @media screen and (min-width: 1080px) and (max-width: 1919px) { */
   html,
   body {
     overflow-x: hidden;
@@ -2284,7 +2288,7 @@ section.wheel>img.case-desktop {
 
   .page {
     width: min(100vw, 3440px);
-    max-width: 3440px;
+    max-width: 1440px;
     margin-inline: auto;
     margin-top: -70px;
     min-height: 1024px;
@@ -2320,11 +2324,89 @@ section.wheel>img.case-desktop {
     width: 1050px;
     height: 28px;
     justify-content: space-between;
+    position: fixed;
     top: auto;
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     opacity: 1;
+  }
+
+  /* Низкая высота окна: футер в потоке внизу .page — прокрутка, без наезда на колесо/карточки */
+  @media screen and (max-height: 955px) {
+    .footer {
+      position: absolute;
+    }
+  }
+
+  /* Тени Ellipse23, Ellipse11, Ellipse12: внутри футера — двигаются вместе с ним (fixed / absolute) */
+  .footer-shadows {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 0;
+  }
+
+  .footer-shadow {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    height: auto;
+    z-index: 0;
+  }
+
+  /* Как у Ellipse16/15: не шире слоя, без max(100%, 1440px) — иначе на узком вьюпорте вылезает за .page */
+  .footer-shadow--ellipse23,
+  .footer-shadow--ellipse11 {
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 1440px);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .footer-shadow--ellipse23 {
+    top: -105px;
+  }
+
+  .footer-shadow--ellipse11 {
+    top: -13px;
+    z-index: 1;
+  }
+
+  /* Было --shadow-top: 975px от .page; смещение от верха футера ≈ 975 − (1024 − 24 − h_футера) */
+  .footer-shadow--ellipse12 {
+    left: 50%;
+    top: 62px;
+    width: min(100%, 1180px);
+    max-width: 100%;
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+
+  .footer .images-footer {
+    position: relative;
+    z-index: 2;
   }
 
   .header {
@@ -2728,9 +2810,9 @@ section.wheel>img.case-desktop {
   }
 
   .wheel-decor-diamonds {
-    --promo-x-from: calc(40% - 40px);
+    --promo-x-from: calc(50% - 184px);
     --promo-y-from: 340px;
-    --promo-x-to: calc(40% - 40px);
+    --promo-x-to: calc(50% - 184px);
     --promo-y-to: 340px;
     --promo-scale-from: 1.1;
     --promo-scale-to: 1.4;
@@ -2922,6 +3004,36 @@ section.wheel>img.case-desktop {
     transform: translate(var(--shadow-translate-x, 0), var(--shadow-translate-y, 0));
   }
 
+  /*
+   * Ellipse16 / Ellipse15: не полагаться только на общий .shadow-desktop width —
+   * явная ширина + max-width + object-fit, чтобы не тянуть растр сильнее контейнера.
+   * Маска по краям смягчает «ножницы» у .page overflow-x, если в PNG резкий край канвы.
+   */
+  .page-bg-image.shadow-desktop.shadow-4,
+  .page-bg-image.shadow-desktop.shadow-5 {
+    width: var(--shadow-width);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+  }
+
   .rect-desktop {
     display: block;
     position: absolute;
@@ -3017,20 +3129,11 @@ section.wheel>img.case-desktop {
     z-index: 1;
   }
 
-  /* Shadow #3: Ellipse23.png */
-  .shadow-3 {
-    --shadow-top: 700px;
-    --shadow-left: 50%;
-    --shadow-width: 1840px;
-    --shadow-translate-x: -50%;
-    --shadow-translate-y: 0;
-  }
-
-  /* Shadow #4: Ellipse16.png */
+  /* Shadow #4: Ellipse16.png — ширина по макету 1440 (не шире слоя .page) */
   .shadow-4 {
     --shadow-top: 650px;
     --shadow-left: 50%;
-    --shadow-width: 1800px;
+    --shadow-width: 1440px;
     --shadow-translate-x: -50%;
     --shadow-translate-y: 0;
   }
@@ -3038,24 +3141,6 @@ section.wheel>img.case-desktop {
   /* Shadow #5: Ellipse15.png */
   .shadow-5 {
     --shadow-top: 640px;
-    --shadow-left: 50%;
-    --shadow-width: 1800px;
-    --shadow-translate-x: -50%;
-    --shadow-translate-y: 0;
-  }
-
-  /* Shadow #6: Ellipse12.png */
-  .shadow-6 {
-    --shadow-top: 975px;
-    --shadow-left: 50%;
-    --shadow-width: 1180px;
-    --shadow-translate-x: -50%;
-    --shadow-translate-y: 0;
-  }
-
-  /* Shadow #7: Ellipse11.png */
-  .shadow-7 {
-    --shadow-top: 895px;
     --shadow-left: 50%;
     --shadow-width: 1440px;
     --shadow-translate-x: -50%;
@@ -3080,14 +3165,9 @@ section.wheel>img.case-desktop {
   }
 
   /*
-   * Растягиваем тени на всю ширину слоя.
+   * Остальные тени: растягиваем на всю ширину слоя.
    * Локальные тени у колеса (1–2) и у фигуры (9) не трогаем.
    */
-  .shadow-3,
-  .shadow-4,
-  .shadow-5,
-  .shadow-6,
-  .shadow-7,
   .shadow-8 {
     width: max(100%, var(--shadow-width));
   }
@@ -3103,28 +3183,17 @@ section.wheel>img.case-desktop {
 }
 
 @media screen and (min-width: 1080px) and (max-width: 1480px) {
-  .wheel-result-popup__box-bonus {
+  /* .wheel-result-popup__box-bonus {
     margin-top: 40px;
   }
 
   .wheel-result-popup__box-steps {
     margin-top: 40px;
-  }
+  } */
 }
 
-/* Десктоп 2: width ≥ 1920px */
+/* Десктоп 2: ≥1920px — только переопределения поверх десктопа 1080px (резина, переменные).
+   Разметка как на десктопе наследуется из блока выше; здесь не дублируем весь layout. */
 /* @media screen and (min-width: 1920px) {
-  .page {
-    width: min(1920px, 100vw);
-    max-width: 1920px;
-    min-height: min(1080px, 100vh);
-    min-height: min(1080px, 100dvh);
-    поверх vh, если поддерживается
-    --layout-id: desktop-1920-up;
-    --design-w: 1920;
-    --design-h: 1080;
-    --layout-safe-inline: clamp(24px, 3vw, 64px);
-    --layout-safe-block: clamp(24px, 3vh, 48px);
-    --layout-scale: calc(min(1920, 100vw) / 393);
-  }
+
 } */
