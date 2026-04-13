@@ -3182,15 +3182,39 @@ section.wheel>img.case-desktop {
   }
 }
 
-@media screen and (min-width: 1080px) and (max-width: 1480px) {
-  /* .wheel-result-popup__box-bonus {
+
+@media screen and (min-width: 1920px) {
+  .hero-header-fine {
+    margin-top: 20px;
+  }
+
+  .wheel, .banners, .counter {
+    margin-top: 100px;
+  }
+
+  .banners, .brand {
+    margin-left: -90px;
+  }
+
+  .counter {
+    margin-left: 90px;
+  }
+
+  .shadow-8, .shadow-4, .shadow-5, .shadow-9, .girl {
+    margin-top: 100px;
+  }
+
+}
+
+/* @media screen and (min-width: 1080px) and (max-width: 1480px) {
+  .wheel-result-popup__box-bonus {
     margin-top: 40px;
   }
 
   .wheel-result-popup__box-steps {
     margin-top: 40px;
-  } */
-}
+  }
+} */
 
 /* Десктоп 2: ≥1920px — только переопределения поверх десктопа 1080px (резина, переменные).
    Разметка как на десктопе наследуется из блока выше; здесь не дублируем весь layout. */
