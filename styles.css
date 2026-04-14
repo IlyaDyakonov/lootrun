@@ -96,6 +96,13 @@ a.loot-run-link {
   pointer-events: none;
 }
 
+.page-bg-image > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
 /* Hidden by default; enabled only in desktop media block */
 .shadow-desktop,
 .rect-desktop {
@@ -2291,7 +2298,7 @@ section.wheel>img.case-desktop {
     max-width: 1440px;
     margin-inline: auto;
     margin-top: -70px;
-    min-height: max(1024px, 108dvh);
+    min-height: max(1024px, 105dvh);
     height: auto;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -3131,7 +3138,7 @@ section.wheel>img.case-desktop {
 
   /* Shadow #4: Ellipse16.png — ширина по макету 1440 (не шире слоя .page) */
   .shadow-4 {
-    --shadow-top: 650px;
+    --shadow-top: 710px;
     --shadow-left: 50%;
     --shadow-width: 1440px;
     --shadow-translate-x: -50%;
@@ -3140,7 +3147,7 @@ section.wheel>img.case-desktop {
 
   /* Shadow #5: Ellipse15.png */
   .shadow-5 {
-    --shadow-top: 640px;
+    --shadow-top: 705px;
     --shadow-left: 50%;
     --shadow-width: 1440px;
     --shadow-translate-x: -50%;
@@ -3149,7 +3156,7 @@ section.wheel>img.case-desktop {
 
   /* Shadow #8: Ellipse10.png */
   .shadow-8 {
-    --shadow-top: 640px;
+    --shadow-top: 675px;
     --shadow-left: 50%;
     --shadow-width: 1034px;
     --shadow-translate-x: -50%;
@@ -3200,12 +3207,19 @@ section.wheel>img.case-desktop {
     margin-left: 90px;
   }
 
-  .shadow-8, .shadow-4, .shadow-5, .shadow-9, .girl, .shadow-1, .shadow-2 {
+  .shadow-9, .girl, .shadow-1, .shadow-2 {
     margin-top: 100px;
   }
 
-
-
+  .shadow-4 > img {
+    margin-top: 105px;
+  }
+  .shadow-5 > img {
+    margin-top: 105px;
+  }
+  .shadow-8 > img {
+    margin-top: 80px;
+  }
 }
 
 /* @media screen and (min-width: 1080px) and (max-width: 1480px) {
