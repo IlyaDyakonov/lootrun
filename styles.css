@@ -72,7 +72,7 @@ a.loot-run-link {
 .page {
   position: relative;
   width: 393px;
-  min-height: 1600px;
+  min-height: 1000px;
   overflow-x: hidden;
   /* background:
     radial-gradient(60% 24% at 50% 9%, rgba(122, 86, 246, 0.18) 0%, rgba(122, 86, 246, 0) 100%),
@@ -2291,8 +2291,8 @@ section.wheel>img.case-desktop {
     max-width: 1440px;
     margin-inline: auto;
     margin-top: -70px;
-    min-height: 1024px;
-    height: 1024px;
+    min-height: max(1024px, 108dvh);
+    height: auto;
     overflow-x: hidden;
     overflow-y: hidden;
     --layout-id: desktop-1080-1919;
@@ -3200,9 +3200,11 @@ section.wheel>img.case-desktop {
     margin-left: 90px;
   }
 
-  .shadow-8, .shadow-4, .shadow-5, .shadow-9, .girl {
+  .shadow-8, .shadow-4, .shadow-5, .shadow-9, .girl, .shadow-1, .shadow-2 {
     margin-top: 100px;
   }
+
+
 
 }
 
