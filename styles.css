@@ -34,20 +34,35 @@
   font-display: swap;
 }
 
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 body {
   width: 100%;
   height: auto;
   background: #0D0E10;
   margin: 0;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   overflow-x: hidden;
 }
 
-html {
-  overflow-x: hidden;
+/* iOS Safari: единый корректный viewport без лишней полосы прокрутки */
+@supports (-webkit-touch-callout: none) {
+  html {
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* Ссылки на loot.run из i18n (app.js) */
