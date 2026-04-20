@@ -34,35 +34,16 @@
   font-display: swap;
 }
 
-html {
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 body {
   width: 100%;
   height: auto;
   background: #0D0E10;
   margin: 0;
   min-height: 100vh;
-  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   overflow-x: hidden;
-}
-
-/* iOS Safari: единый корректный viewport без лишней полосы прокрутки */
-@supports (-webkit-touch-callout: none) {
-  html {
-    min-height: -webkit-fill-available;
-  }
-
-  body {
-    min-height: -webkit-fill-available;
-  }
 }
 
 /* Ссылки на loot.run из i18n (app.js) */
@@ -88,12 +69,24 @@ a.loot-run-link {
   position: relative;
   width: 393px;
   min-height: 1000px;
-  overflow-x: hidden;
+  /* Оставляем обрезку по X, но не создаём второй вертикальный скролл у .page
+  удалить две строки ниже и вернуть overflow-x: hidden; */
+  overflow-x: clip;
+  overflow-y: visible;
   /* background:
     radial-gradient(60% 24% at 50% 9%, rgba(122, 86, 246, 0.18) 0%, rgba(122, 86, 246, 0) 100%),
     linear-gradient(180deg, #15161B 0%, #0D0E10 28%, #0D0E10 100%); */
   --hero-desc-top: 262px;
   --hero-desc-width: 310px;
+}
+
+/* Fallback для старых браузеров без поддержки clip
+это было добавлено */
+@supports not (overflow: clip) {
+  .page {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
 }
 
 /* Фоновый слой страницы: декоративные элементы без влияния на layout */
